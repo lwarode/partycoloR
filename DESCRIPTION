@@ -18,4 +18,5 @@ Imports:
     tidyr,
     purrr,
     stringr
-
+URL: https://github.com/lwarode/partycoloR
+BugReports: https://github.com/lwarode/partycoloR/issues
