@@ -7,9 +7,9 @@ The goal of partycoloR is to extract color information from Wikipedia
 articles of political parties. Party colors are playing a crucial role
 in visually identifying political parties. The function
 `wikipedia_party_color` extracts the party color code (HEX/HTML color
-codes/names) from webscraped English Wikipedia political party pages.
+codes / names) from webscraped English Wikipedia political party pages.
 The input argument needs to be a list and the function generates a data
-frame / tibble with all the extracted color codes/names.
+frame / tibble with all the extracted color codes / names.
 
 ## Installation
 
