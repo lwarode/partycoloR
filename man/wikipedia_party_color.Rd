@@ -2,7 +2,7 @@
 % Please edit documentation in R/wikipedia_party_color.R
 \name{wikipedia_party_color}
 \alias{wikipedia_party_color}
-\title{Wikipedia Party Color Function}
+\title{Wikipedia party color function}
 \arguments{
 \item{party_url_list}{A list of Wikipedia political party URLs}
 }
@@ -10,7 +10,7 @@
 A data frame / tibble which contains all the extracted color codes from Wikipedia
 }
 \description{
-Wikipedia Party Color Function
+Wikipedia party color function
 }
 \examples{
 \dontrun{

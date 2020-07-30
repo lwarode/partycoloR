@@ -1,9 +1,9 @@
-#' Wikipedia Party Color Function
+#' Wikipedia party color function
 #'
 #' @param party_url_list A list of Wikipedia political party URLs
 #'
 #' @return A data frame / tibble which contains all the extracted color codes from Wikipedia
-#' @export
+#' @export wikipedia_party_color
 #'
 #' @name wikipedia_party_color
 #'
