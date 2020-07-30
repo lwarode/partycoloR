@@ -17,16 +17,5 @@ You can install the released version of partycoloR from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("partycoloR")
-```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(partycoloR)
-#> Warning: replacing previous import 'purrr::pluck' by 'rvest::pluck' when loading
-#> 'partycoloR'
-## basic example code
+devtools::install_github("lwarode/partycoloR")
 ```

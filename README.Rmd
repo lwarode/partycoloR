@@ -24,15 +24,5 @@ The input argument needs to be a list and the function generates a data frame / 
 You can install the released version of partycoloR from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("partycoloR")
+devtools::install_github("lwarode/partycoloR")
 ```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
-library(partycoloR)
-## basic example code
-```
-
