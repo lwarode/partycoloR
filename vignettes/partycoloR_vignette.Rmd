@@ -1,0 +1,20 @@
+---
+title: "partycoloR -- getting party color"
+author: "Lukas Warode"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{partycoloR -- getting party color}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(partycoloR)
+```

@@ -5,11 +5,13 @@
 #' @return A data frame / tibble which contains all the extracted color codes from Wikipedia
 #' @export
 #'
+#' @name wikipedia_party_color
+#'
 #' @import rvest
 #' @import xml2
 #' @import dplyr
 #' @import tidyr
-#' @import purrr
+#' @importFrom purrr is_character
 #' @import stringr
 #'
 #' @examples
