@@ -41,3 +41,6 @@ party_color_df <- wikipedia_party_color(party_list)
 glimpse(party_color_df)
 ```
 
+## Screenshot from Wikipedia party page
+
+![](partycolorR_example.png)
