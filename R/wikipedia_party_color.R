@@ -44,7 +44,7 @@ wikipedia_party_color <- function(party_url_list) {
     html_list[[i]] <- read_html_safe(i)
   }
 
-  html_color_list <- lapply(html_list, color_function)
+  html_color_list <- map(html_list, color_function)
 
   party_color_matrix <- do.call(rbind, html_color_list)
 
