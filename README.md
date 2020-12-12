@@ -3,6 +3,8 @@
 
 # partycoloR
 
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/partycoloR?color=brightgreen)](https://cran.r-project.org/package=partycoloR)
+
 The goal of partycoloR is to extract color information from Wikipedia
 articles of political parties. Party colors are playing a crucial role
 in visually identifying political parties. The function
