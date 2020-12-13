@@ -1,9 +1,8 @@
 ---
-title: "partycoloR -- getting party color"
-author: "Lukas Warode"
+title: "partycoloR_vignette"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{partycoloR -- getting party color}
+  %\VignetteIndexEntry{partycoloR_vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
