@@ -34,7 +34,7 @@ wikipedia_party_color <- function(party_url_list) {
   # function for extracting color data
   color_function <- function(x) {
 
-    if(!is_character(x))
+    if(! is_character(x))
       html_nodes(x, "table.vcard td span") %>%
       html_attrs() %>%
       unlist() %>%
@@ -53,7 +53,8 @@ wikipedia_party_color <- function(party_url_list) {
 
   names(html_list) <- party_url_list
 
-  html_color_list <- map(html_list, color_function)
+  html_color_list <- html_list %>%
+    map(color_function)
 
   party_color_matrix <- do.call(rbind, html_color_list)
 
@@ -68,7 +69,7 @@ wikipedia_party_color <- function(party_url_list) {
     mutate(across(starts_with("V"),
                   ~ str_extract(., "(?<=background-color:)[^;]+"),
                   .names = "color_{col}")) %>%
-    select(!starts_with("V")) %>%
+    select(! starts_with("V")) %>%
     gather(type, value, -url) %>%
     distinct(url, value, .keep_all = TRUE) %>%
     spread(type, value) %>%
@@ -82,7 +83,7 @@ wikipedia_party_color <- function(party_url_list) {
                   ),
                   .names = "{col}_check")
     ) %>%
-    select_if(function(x) !(all(is.na(x))))
+    select_if(function(x) ! (all(is.na(x))))
 
 }
 
