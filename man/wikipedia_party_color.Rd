@@ -14,7 +14,7 @@ Wikipedia party color function
 }
 \examples{
 \dontrun{
-example_list <- list("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+party_list <- list("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
 "https://en.wikipedia.org/wiki/Republican_Party_(United_States)")
 wikipedia_party_color(example_list)
 }

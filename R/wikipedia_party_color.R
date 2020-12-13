@@ -25,24 +25,33 @@ utils::globalVariables(c(".", "type", "value"))
 wikipedia_party_color <- function(party_url_list) {
 
   read_html_safe <- function(x) {
+
     tryCatch(read_html(x),
              error = function(e) return("url_not_existent"))
+
   }
 
   # function for extracting color data
   color_function <- function(x) {
+
     if(!is_character(x))
       html_nodes(x, "table.vcard td span") %>%
       html_attrs() %>%
       unlist() %>%
       str_subset("background-color")
+
   }
 
-  html_list <- list()
+  # html_list <- list()
+  #
+  # for (i in party_url_list) {
+  #   html_list[[i]] <- read_html_safe(i)
+  # }
 
-  for (i in party_url_list) {
-    html_list[[i]] <- read_html_safe(i)
-  }
+  html_list <- party_list %>%
+    map(read_html_safe)
+
+  names(html_list) <- party_list
 
   html_color_list <- map(html_list, color_function)
 
