@@ -12,6 +12,7 @@
 #' @import dplyr
 #' @import tidyr
 #' @importFrom purrr is_character
+#' @importFrom purrr map
 #' @import stringr
 #'
 #' @examples
