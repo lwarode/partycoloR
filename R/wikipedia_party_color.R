@@ -57,14 +57,16 @@ wikipedia_party_color <- function(party_url_list) {
   html_color_list <- html_list %>%
     map(color_function)
 
-  party_color_matrix <- do.call(rbind, html_color_list)
-
-  party_color_df_raw <- as.data.frame.array(party_color_matrix)
-
-  party_color_df_raw$url <- row.names(party_color_df_raw)
+  party_color_df_raw <- rbind(html_color_list) %>%
+    as_tibble() %>%
+    pivot_longer(everything()) %>%
+    mutate(value = na_if(value, "character(0)")) %>%
+    filter(!is.na(value)) %>%
+    unnest_wider(value, names_sep = "_V") %>%
+    rename(url = name) %>%
+    rename_at(vars(starts_with("value")), ~ str_sub(.x, 7))
 
   party_color_df <- party_color_df_raw %>%
-    as_tibble() %>%
     select(url, everything()) %>%
     # extract color information with string functions and regex for all variables
     mutate(across(starts_with("V"),
