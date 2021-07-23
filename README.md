@@ -29,8 +29,10 @@ English Wikipedia. The function returns a data frame / tibble with all
 party colors (as HEX color or HTML color code).
 
 ``` r
-party_list <- list("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
-"https://en.wikipedia.org/wiki/Republican_Party_(United_States)")
+party_list <- list(
+"https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+"https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
+)
 
 party_color_df <- wikipedia_party_color(party_list)
 
