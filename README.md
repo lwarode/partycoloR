@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# partycoloR
+# partycoloR <img src="partycoloR_sticker.png" align="right" alt="" width="240" />
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/partycoloR?color=brightgreen)](https://cran.r-project.org/package=partycoloR)
 
