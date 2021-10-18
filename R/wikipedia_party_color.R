@@ -88,5 +88,7 @@ wikipedia_party_color <- function(party_url_list) {
     ) %>%
     select_if(function(x) ! (all(is.na(x))))
 
+  return(party_color_df)
+
 }
 
