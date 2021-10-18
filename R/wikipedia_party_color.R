@@ -77,7 +77,7 @@ wikipedia_party_color <- function(party_url_list) {
     distinct(url, value, .keep_all = TRUE) %>%
     spread(type, value) %>%
     rename_at(vars(starts_with("c")),
-              funs(str_replace(., "_V", "_"))) %>%
+              ~ str_replace(., "_V", "_")) %>%
     # add information variable
     mutate(across(starts_with("c"),
                   ~ case_when(
