@@ -20,7 +20,7 @@ countries, and Wikipedia URLs for thousands of political parties worldwide.
 }
 \details{
 The data comes from the Partyfacts project
-(<https://partyfacts.org/>), which links party datasets and provides
+(<https://partyfacts.herokuapp.com/>), which links party datasets and provides
 Wikipedia URLs for political parties. The data is downloaded from the
 Partyfacts GitHub repository.
 }

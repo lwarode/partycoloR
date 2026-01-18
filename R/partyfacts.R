@@ -174,6 +174,100 @@ get_party_color_by_name <- function(party_name, country = NULL, all_colors = FAL
   parties
 }
 
+#' Get party logo by name
+#'
+#' A convenience function that combines party lookup and logo extraction.
+#' Searches for a party by name, finds its Wikipedia URL, and extracts the
+#' party logo URL.
+#'
+#' @param party_name A character string with the party name to search for.
+#' @param country Optional. ISO 3-letter country code to filter results.
+#' @param data Optional. A Partyfacts dataset.
+#'
+#' @return If exactly one party is found, returns the logo URL. If multiple
+#'   parties match, returns a tibble with party info and logo URLs. Returns NA
+#'   if no party is found.
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' # Get logo for German SPD
+#' get_party_logo_by_name("SPD", country = "DEU")
+#'
+#' # Search more broadly
+#' get_party_logo_by_name("Labour", country = "GBR")
+#' }
+get_party_logo_by_name <- function(party_name, country = NULL, data = NULL) {
+  # Look up the party
+  parties <- lookup_party_url(party_name, country = country, data = data, exact = FALSE)
+
+  if (nrow(parties) == 0) {
+    return(NA_character_)
+  }
+
+  # Get logos for all matching parties
+  parties$logo_url <- get_party_logo(parties$url)
+
+  # If exactly one match, return just the logo URL
+  if (nrow(parties) == 1) {
+    return(parties$logo_url[1])
+  }
+
+  parties
+}
+
+#' Get party info by name
+#'
+#' A convenience function that combines party lookup with color and logo
+#' extraction. Searches for a party by name, finds its Wikipedia URL, and
+#' extracts both color and logo.
+#'
+#' @param party_name A character string with the party name to search for.
+#' @param country Optional. ISO 3-letter country code to filter results.
+#' @param all_colors Logical. If `TRUE`, includes all colors as a list-column.
+#'   Default is `FALSE`.
+#' @param data Optional. A Partyfacts dataset.
+#'
+#' @return A tibble with party info, color, and logo_url columns. Returns a
+#'   tibble with zero rows if no party is found.
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' # Get info for German SPD
+#' get_party_info_by_name("SPD", country = "DEU")
+#'
+#' # Search more broadly with all colors
+#' get_party_info_by_name("Labour", country = "GBR", all_colors = TRUE)
+#' }
+get_party_info_by_name <- function(party_name, country = NULL, all_colors = FALSE,
+                                   data = NULL) {
+  # Look up the party
+  parties <- lookup_party_url(party_name, country = country, data = data, exact = FALSE)
+
+  if (nrow(parties) == 0) {
+    # Return empty tibble with expected columns
+    parties$color <- character(0)
+    parties$logo_url <- character(0)
+    if (all_colors) {
+      parties$all_colors <- list()
+    }
+    return(parties)
+  }
+
+  # Get colors and logos for all matching parties
+  parties$color <- get_party_color(parties$url, all_colors = FALSE, normalize = TRUE)
+  parties$logo_url <- get_party_logo(parties$url)
+
+  if (all_colors) {
+    parties$all_colors <- get_party_color(parties$url, all_colors = TRUE, normalize = TRUE)
+  }
+
+  parties
+}
+
 #' Internal cache environment for partycoloR
 #' @noRd
 partycolor_cache <- new.env(parent = emptyenv())
