@@ -2,7 +2,7 @@
 
 ## Authors
 
-- **Lukas Warode**. Author, maintainer.
+- **[Lukas Warode](https://github.com/lwarode)**. Author, maintainer.
 
 ## Citation
 

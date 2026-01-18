@@ -13,6 +13,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Extract Party Colors and Logos from Wikipedia">
 <meta name="description" content="Extract political party colors and logos from English Wikipedia party pages. Provides functions to scrape party infoboxes for color codes (HEX or HTML color names) and logo images. Includes integration with the Partyfacts database for easy party lookups. Designed for political scientists and party researchers working with electoral and party data.">
 <meta property="og:description" content="Extract political party colors and logos from English Wikipedia party pages. Provides functions to scrape party infoboxes for color codes (HEX or HTML color names) and logo images. Includes integration with the Partyfacts database for easy party lookups. Designed for political scientists and party researchers working with electoral and party data.">
+<meta property="og:image" content="https://lwarode.github.io/partycoloR/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -52,8 +53,10 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="partycolor-">partycoloR <img src="partycoloR_sticker.png" align="right" alt="" width="160"><a class="anchor" aria-label="anchor" href="#partycolor-"></a>
-</h1></div>
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="partycolor-">partycoloR <img src="partycoloR_sticker.png" align="right" alt="" width="160"><a class="anchor" aria-label="anchor" href="#partycolor-"></a>
+</h1>
+</div>
 <!-- badges: start -->
 
 <p><strong>partycoloR</strong> extracts political party colors and logos from English Wikipedia party pages. Party colors play a crucial role in visually identifying political parties in data visualizations and research.</p>
@@ -64,7 +67,7 @@
 <li>Extract party colors (HEX codes) from Wikipedia infoboxes</li>
 <li>Extract party logo URLs</li>
 <li>Handle parties with multiple colors</li>
-<li>Integrate with the <a href="https://partyfacts.herokuapp.com/" class="external-link">Partyfacts</a> database for party lookups</li>
+<li>Integrate with the <a href="https://partyfacts.herokuapp.com/" class="external-link">Party Facts</a> database for party lookups</li>
 <li>Works seamlessly with dplyr/tidyverse workflows</li>
 </ul>
 </div>
@@ -102,7 +105,11 @@
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_party_logo.html">get_party_logo</a></span><span class="op">(</span><span class="st">"https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; "https://upload.wikimedia.org/wikipedia/commons/thumb/..."</span></span></code></pre></div>
+<span><span class="co">#&gt; "https://upload.wikimedia.org/wikipedia/commons/thumb/..."</span></span>
+<span></span>
+<span><span class="co"># Download a logo to file</span></span>
+<span><span class="fu"><a href="reference/get_party_logo_by_name.html">get_party_logo_by_name</a></span><span class="op">(</span><span class="st">"SPD"</span>, country <span class="op">=</span> <span class="st">"DEU"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="reference/download_party_logo.html">download_party_logo</a></span><span class="op">(</span><span class="st">"spd_logo.svg"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="get-both-at-once">Get Both at Once<a class="anchor" aria-label="anchor" href="#get-both-at-once"></a>
@@ -169,12 +176,16 @@
 </h2>
 <ul>
 <li>
-<a href="https://partyfacts.herokuapp.com/" class="external-link">Partyfacts</a> - Links political science datasets</li>
+<a href="https://partyfacts.herokuapp.com/" class="external-link">Party Facts</a> - Party Facts links datasets on political parties across a wide range of social science datasets</li>
 <li>
-<a href="http://www.parlgov.org/" class="external-link">ParlGov</a> - Parliament and government database</li>
+<a href="http://www.parlgov.org/" class="external-link">ParlGov</a> - Database on parties, elections and cabinets from EU and OECD democracies</li>
 <li>
-<a href="https://manifesto-project.wzb.eu/" class="external-link">Manifesto Project</a> - Party manifestos</li>
+<a href="https://lwarode.shinyapps.io/ParlGov_Dashboard/" class="external-link">ParlGov Dashboard</a> - R Shiny dashboard with data from ParlGov and party colors from <code>partycoloR</code>
+</li>
 </ul>
+<div class="float">
+<img src="ParlGov_Dashboard_Screenshot.jpeg" alt="ParlGov Dashboard"><div class="figcaption">ParlGov Dashboard</div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
@@ -199,6 +210,8 @@
 <ul class="list-unstyled">
 <li><a href="https://github.com/lwarode/partycoloR/" class="external-link">Browse source code</a></li>
 <li><a href="https://github.com/lwarode/partycoloR/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://partyfacts.herokuapp.com/" class="external-link">Party Facts</a></li>
+<li><a href="https://lwarode.shinyapps.io/ParlGov_Dashboard/" class="external-link">ParlGov Dashboard</a></li>
 </ul>
 </div>
 
@@ -221,7 +234,8 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Lukas Warode <br><small class="roles"> Author, maintainer </small>   </li>
+<li>
+<a href="https://github.com/lwarode" class="external-link">Lukas Warode</a> <br><small class="roles"> Author, maintainer </small>   </li>
 </ul>
 </div>
 
@@ -239,7 +253,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Lukas Warode.</p>
+  <p>Developed by <a href="https://github.com/lwarode" class="external-link">Lukas Warode</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">

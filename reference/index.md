@@ -11,7 +11,7 @@ Extract colors and logos from Wikipedia
 - [`get_party_info()`](https://lwarode.github.io/partycoloR/reference/get_party_info.md)
   : Extract party information from Wikipedia
 
-## Partyfacts Integration
+## Party Facts Integration
 
 Look up parties by name
 
@@ -21,6 +21,10 @@ Look up parties by name
   : Look up party Wikipedia URL
 - [`get_party_color_by_name()`](https://lwarode.github.io/partycoloR/reference/get_party_color_by_name.md)
   : Get party color by name
+- [`get_party_logo_by_name()`](https://lwarode.github.io/partycoloR/reference/get_party_logo_by_name.md)
+  : Get party logo by name
+- [`get_party_info_by_name()`](https://lwarode.github.io/partycoloR/reference/get_party_info_by_name.md)
+  : Get party info by name
 - [`clear_partycolor_cache()`](https://lwarode.github.io/partycoloR/reference/clear_partycolor_cache.md)
   : Clear the partycoloR cache
 

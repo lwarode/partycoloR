@@ -54,8 +54,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Getting Started with partycoloR</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Getting Started with partycoloR</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/lwarode/partycoloR/blob/master/vignettes/partycoloR_vignette.Rmd" class="external-link"><code>vignettes/partycoloR_vignette.Rmd</code></a></small>
@@ -121,11 +120,28 @@ image:</p>
 <span><span class="co">#&gt; "https://upload.wikimedia.org/wikipedia/commons/thumb/..."</span></span></code></pre></div>
 </div>
 <div class="section level3">
+<h3 id="downloading-party-logos">Downloading Party Logos<a class="anchor" aria-label="anchor" href="#downloading-party-logos"></a>
+</h3>
+<p>You can download logos to a local file using
+<code><a href="../reference/download_party_logo.html">download_party_logo()</a></code>:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get logo URL and download it</span></span>
+<span><span class="va">logo_url</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_party_logo.html">get_party_logo</a></span><span class="op">(</span><span class="va">dem_url</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/download_party_logo.html">download_party_logo</a></span><span class="op">(</span><span class="va">logo_url</span>, <span class="st">"democratic_logo.png"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or use a pipeline with get_party_logo_by_name()</span></span>
+<span><span class="fu"><a href="../reference/get_party_logo_by_name.html">get_party_logo_by_name</a></span><span class="op">(</span><span class="st">"SPD"</span>, country <span class="op">=</span> <span class="st">"DEU"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="../reference/download_party_logo.html">download_party_logo</a></span><span class="op">(</span><span class="st">"spd_logo.svg"</span><span class="op">)</span></span></code></pre></div>
+<p>Note that the file extension should match the actual image format.
+Many Wikipedia logos are SVGs, so check the URL to determine the correct
+extension.</p>
+</div>
+<div class="section level3">
 <h3 id="getting-both-at-once">Getting Both at Once<a class="anchor" aria-label="anchor" href="#getting-both-at-once"></a>
 </h3>
 <p>For efficiency, use <code><a href="../reference/get_party_info.html">get_party_info()</a></code> to extract both
 color and logo in a single request:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_party_info.html">get_party_info</a></span><span class="op">(</span><span class="va">urls</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 x 3</span></span>
 <span><span class="co">#&gt;   url                                                      color   logo_url</span></span>
@@ -140,7 +156,7 @@ color and logo in a single request:</p>
 </h2>
 <p>The functions are designed to work seamlessly with
 <code>dplyr::mutate()</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">parties</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
 <span>  party <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Democrats"</span>, <span class="st">"Republicans"</span>, <span class="st">"Greens"</span><span class="op">)</span>,</span>
 <span>  wiki_url <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -161,7 +177,7 @@ color and logo in a single request:</p>
 <p>When using <code>all_colors = TRUE</code>, the result is a
 list-column. Use <code>purrr</code> functions to extract specific
 colors:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">german_parties</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
@@ -185,7 +201,7 @@ colors:</p>
 <span><span class="co">#&gt; 1 CDU   https://en.wikipedia.org/wiki/Chris.. &lt;list [1]&gt; #000000 #FF6600</span></span>
 <span><span class="co">#&gt; 2 SPD   https://en.wikipedia.org/wiki/Soci..  &lt;list [1]&gt; #E3000F NA</span></span></code></pre></div>
 <p>Alternatively, unnest to long format (one row per color):</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">german_parties</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>all_colors <span class="op">=</span> <span class="fu"><a href="../reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="va">wiki_url</span>, all_colors <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu">unnest_longer</span><span class="op">(</span><span class="va">all_colors</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -199,16 +215,16 @@ colors:</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="using-partyfacts-integration">Using Partyfacts Integration<a class="anchor" aria-label="anchor" href="#using-partyfacts-integration"></a>
+<h2 id="using-party-facts-integration">Using Party Facts Integration<a class="anchor" aria-label="anchor" href="#using-party-facts-integration"></a>
 </h2>
 <p>If you don’t have Wikipedia URLs, you can look up parties by name
-using the <a href="https://partyfacts.herokuapp.com/" class="external-link">Partyfacts</a>
+using the <a href="https://partyfacts.herokuapp.com/" class="external-link">Party Facts</a>
 database integration.</p>
 <div class="section level3">
-<h3 id="download-partyfacts-data">Download Partyfacts Data<a class="anchor" aria-label="anchor" href="#download-partyfacts-data"></a>
+<h3 id="download-party-facts-data">Download Party Facts Data<a class="anchor" aria-label="anchor" href="#download-party-facts-data"></a>
 </h3>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Download the current Partyfacts Wikipedia dataset</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Download the current Party Facts Wikipedia dataset</span></span>
 <span><span class="va">pf_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_partyfacts_wikipedia.html">get_partyfacts_wikipedia</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">pf_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 x 8</span></span>
@@ -220,7 +236,7 @@ database integration.</p>
 <div class="section level3">
 <h3 id="look-up-parties-by-name">Look Up Parties by Name<a class="anchor" aria-label="anchor" href="#look-up-parties-by-name"></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Search for a party by name</span></span>
 <span><span class="fu"><a href="../reference/lookup_party_url.html">lookup_party_url</a></span><span class="op">(</span><span class="st">"SPD"</span>, country <span class="op">=</span> <span class="st">"DEU"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 x 8</span></span>
@@ -236,7 +252,7 @@ database integration.</p>
 </h3>
 <p>Use <code><a href="../reference/get_party_color_by_name.html">get_party_color_by_name()</a></code> to combine lookup and
 color extraction:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get SPD color directly by name</span></span>
 <span><span class="fu"><a href="../reference/get_party_color_by_name.html">get_party_color_by_name</a></span><span class="op">(</span><span class="st">"SPD"</span>, country <span class="op">=</span> <span class="st">"DEU"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; "#E3000F"</span></span>
@@ -252,7 +268,7 @@ color extraction:</p>
 <h2 id="visualization-example">Visualization Example<a class="anchor" aria-label="anchor" href="#visualization-example"></a>
 </h2>
 <p>Here’s how to use party colors in a ggplot2 visualization:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Example data: German 2021 election results</span></span>
@@ -287,7 +303,7 @@ color extraction:</p>
 <h2 id="error-handling">Error Handling<a class="anchor" aria-label="anchor" href="#error-handling"></a>
 </h2>
 <p>The functions handle errors gracefully:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Invalid URLs return NA</span></span>
 <span><span class="fu"><a href="../reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="st">"https://not-wikipedia.com/page"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; NA</span></span>
@@ -308,9 +324,9 @@ color extraction:</p>
 <div class="section level2">
 <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
-<p>The Partyfacts data is cached in the R session to avoid repeated
+<p>The Party Facts data is cached in the R session to avoid repeated
 downloads:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># First call downloads the data</span></span>
 <span><span class="va">pf_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_partyfacts_wikipedia.html">get_partyfacts_wikipedia</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
@@ -327,7 +343,7 @@ downloads:</p>
 <li><p><strong>Batch requests</strong>: When processing many parties,
 pass all URLs to <code><a href="../reference/get_party_color.html">get_party_color()</a></code> at once rather than
 calling it in a loop.</p></li>
-<li><p><strong>Cache Partyfacts data</strong>: If you’ll be doing
+<li><p><strong>Cache Party Facts data</strong>: If you’ll be doing
 multiple lookups, call <code><a href="../reference/get_partyfacts_wikipedia.html">get_partyfacts_wikipedia()</a></code> once and
 pass the result to <code><a href="../reference/lookup_party_url.html">lookup_party_url()</a></code>.</p></li>
 <li><p><strong>Handle missing data</strong>: Always check for NA values
@@ -343,14 +359,17 @@ format may have changed.</p></li>
 </h2>
 <ul>
 <li>
-<a href="https://partyfacts.herokuapp.com/" class="external-link">Partyfacts</a> - The
-source for party identifiers and Wikipedia URLs</li>
+<a href="https://partyfacts.herokuapp.com/" class="external-link">Party Facts</a> - Party
+Facts links datasets on political parties across a wide range of social
+science datasets</li>
 <li>
-<a href="http://www.parlgov.org/" class="external-link">ParlGov</a> - Parliament and
-government database</li>
+<a href="http://www.parlgov.org/" class="external-link">ParlGov</a> - Database on parties,
+elections and cabinets from EU and OECD democracies</li>
 <li>
-<a href="https://manifesto-project.wzb.eu/" class="external-link">Manifesto Project</a> -
-Party manifestos and positions</li>
+<a href="https://lwarode.shinyapps.io/ParlGov_Dashboard/" class="external-link">ParlGov
+Dashboard</a> - R Shiny dashboard with data from ParlGov and party
+colors from <code>partycoloR</code>
+</li>
 </ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -360,7 +379,7 @@ Party manifestos and positions</li>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Lukas Warode.</p>
+  <p>Developed by <a href="https://github.com/lwarode" class="external-link">Lukas Warode</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
