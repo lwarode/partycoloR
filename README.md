@@ -1,5 +1,6 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+
 
 # partycoloR <img src="partycoloR_sticker.png" align="right" alt="" width="160" />
 
@@ -8,6 +9,8 @@
 [![R-CMD-check](https://github.com/lwarode/partycoloR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lwarode/partycoloR/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
+
+Documentation: <https://lwarode.github.io/partycoloR/>
 
 **partycoloR** extracts political party colors and logos from English Wikipedia
 party pages. Party colors play a crucial role in visually identifying political
@@ -25,7 +28,7 @@ parties in data visualizations and research.
 
 You can install partycoloR from [GitHub](https://github.com/lwarode/partycoloR):
 
-``` r
+```r
 # install.packages("devtools")
 devtools::install_github("lwarode/partycoloR")
 ```
@@ -33,6 +36,7 @@ devtools::install_github("lwarode/partycoloR")
 ## Quick Start
 
 ### Extract Party Colors
+
 
 ``` r
 library(partycoloR)
@@ -52,6 +56,7 @@ get_party_color(urls)
 
 ### Extract Party Logos
 
+
 ``` r
 get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
 #> "https://upload.wikimedia.org/wikipedia/commons/thumb/..."
@@ -63,6 +68,7 @@ get_party_logo_by_name("SPD", country = "DEU") %>%
 
 ### Get Both at Once
 
+
 ``` r
 get_party_info(urls)
 #> # A tibble: 2 x 3
@@ -73,6 +79,7 @@ get_party_info(urls)
 ```
 
 ### Use with dplyr
+
 
 ``` r
 library(dplyr)
@@ -95,6 +102,7 @@ parties %>%
 
 Don't have Wikipedia URLs? Use the Partyfacts integration:
 
+
 ``` r
 # Download Partyfacts data
 pf_data <- get_partyfacts_wikipedia()
@@ -115,7 +123,7 @@ extracting:
 - **Colors**: From `<span>` elements with `background-color` style attributes
 - **Logos**: From the infobox image cell
 
-![Wikipedia party infobox example](partycolorR_example.png)
+![Wikipedia party infobox example](man/figures/partycolorR_example.png)
 
 ## Related Resources
 
@@ -123,20 +131,15 @@ extracting:
 - [ParlGov](http://www.parlgov.org/) - Database on parties, elections and cabinets from EU and OECD democracies
 - [ParlGov Dashboard](https://lwarode.shinyapps.io/ParlGov_Dashboard/) - R Shiny dashboard with data from ParlGov and party colors from `partycoloR`
 
-![ParlGov Dashboard](ParlGov_Dashboard_Screenshot.jpeg)
+![ParlGov Dashboard](man/figures/ParlGov_Dashboard_Screenshot.jpeg)
 
 ## Citation
 
 If you use this package in your research, please cite it:
 
-``` r
+```r
 citation("partycoloR")
 ```
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request on
-[GitHub](https://github.com/lwarode/partycoloR).
 
 ## License
 

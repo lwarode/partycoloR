@@ -1,0 +1,8 @@
+bibentry(
+  bibtype  = "Manual",
+  title    = "partycoloR: Extract Party Colors and Logos from Wikipedia",
+  author   = person("Lukas", "Warode"),
+  year     = "2025",
+  note     = "R package version 0.2.0",
+  url      = "https://github.com/lwarode/partycoloR"
+)

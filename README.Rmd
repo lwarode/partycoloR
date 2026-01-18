@@ -22,6 +22,8 @@ knitr::opts_chunk$set(
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
+Documentation: <https://lwarode.github.io/partycoloR/>
+
 **partycoloR** extracts political party colors and logos from English Wikipedia
 party pages. Party colors play a crucial role in visually identifying political
 parties in data visualizations and research.
@@ -128,7 +130,7 @@ extracting:
 - **Colors**: From `<span>` elements with `background-color` style attributes
 - **Logos**: From the infobox image cell
 
-![Wikipedia party infobox example](partycolorR_example.png)
+![Wikipedia party infobox example](man/figures/partycolorR_example.png)
 
 ## Related Resources
 
@@ -136,7 +138,7 @@ extracting:
 - [ParlGov](http://www.parlgov.org/) - Database on parties, elections and cabinets from EU and OECD democracies
 - [ParlGov Dashboard](https://lwarode.shinyapps.io/ParlGov_Dashboard/) - R Shiny dashboard with data from ParlGov and party colors from `partycoloR`
 
-![ParlGov Dashboard](ParlGov_Dashboard_Screenshot.jpeg)
+![ParlGov Dashboard](man/figures/ParlGov_Dashboard_Screenshot.jpeg)
 
 ## Citation
 
@@ -145,11 +147,6 @@ If you use this package in your research, please cite it:
 ```r
 citation("partycoloR")
 ```
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request on
-[GitHub](https://github.com/lwarode/partycoloR).
 
 ## License
 
