@@ -31,7 +31,9 @@ Suggests:
     knitr,
     rmarkdown,
     ggplot2,
-    scales
+    scales,
+    dplyr,
+    tidyr
 VignetteBuilder: knitr
 URL: https://github.com/lwarode/partycoloR
 BugReports: https://github.com/lwarode/partycoloR/issues

@@ -6,6 +6,8 @@
 \alias{partycoloR-package}
 \title{partycoloR: Extract Party Colors and Logos from Wikipedia}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Extract political party colors and logos from English Wikipedia party pages. Provides functions to scrape party infoboxes for color codes (HEX or HTML color names) and logo images. Includes integration with the Partyfacts database for easy party lookups. Designed for political scientists and party researchers working with electoral and party data.
 }
 \seealso{
