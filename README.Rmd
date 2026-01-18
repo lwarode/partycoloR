@@ -9,42 +9,142 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  eval = FALSE
 )
 ```
 
-# partycoloR <img src="partycoloR_sticker.png" align="right" alt="" width="240" />
+# partycoloR <img src="partycoloR_sticker.png" align="right" alt="" width="160" />
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/partycoloR?color=brightgreen)](https://cran.r-project.org/package=partycoloR)
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/partycoloR)](https://CRAN.R-project.org/package=partycoloR)
+[![R-CMD-check](https://github.com/lwarode/partycoloR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/lwarode/partycoloR/actions/workflows/R-CMD-check.yaml)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
 
-The goal of partycoloR is to extract color information from Wikipedia articles of political parties. Party colors are playing a crucial role in visually identifying political parties.
-The function `wikipedia_party_color` extracts the party color code (HEX/HTML color codes / names) from webscraped English Wikipedia political party pages. 
-The input argument needs to be a list and the function generates a data frame / tibble with all the extracted color codes / names.
+**partycoloR** extracts political party colors and logos from English Wikipedia
+party pages. Party colors play a crucial role in visually identifying political
+parties in data visualizations and research.
+
+## Features
+
+- Extract party colors (HEX codes) from Wikipedia infoboxes
+- Extract party logo URLs
+- Handle parties with multiple colors
+- Integrate with the [Partyfacts](https://partyfacts.org/) database for party lookups
+- Works seamlessly with dplyr/tidyverse workflows
 
 ## Installation
 
-You can install the released version of partycoloR from [GitHub](https://github.com/lwarode/partycoloR) with:
+You can install partycoloR from [GitHub](https://github.com/lwarode/partycoloR):
 
-``` r
+```r
+# install.packages("devtools")
 devtools::install_github("lwarode/partycoloR")
 ```
 
-## Example
+## Quick Start
 
-The input argument is a list of political party articles (URL) from English Wikipedia. 
-The function returns a data frame / tibble with all party colors (as HEX color or HTML color code).
+### Extract Party Colors
 
-```r
-party_list <- list(
-"https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
-"https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
+```{r example-color}
+library(partycoloR)
+
+# Single party
+get_party_color("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+#> "#0015BC"
+
+# Multiple parties
+urls <- c(
+  "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+  "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
 )
-
-party_color_df <- wikipedia_party_color(party_list)
-
-glimpse(party_color_df)
+get_party_color(urls)
+#> "#0015BC" "#E81B23"
 ```
 
-## Screenshot from Wikipedia party page
+### Extract Party Logos
 
-![](partycolorR_example.png)
+```{r example-logo}
+get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+#> "https://upload.wikimedia.org/wikipedia/commons/thumb/..."
+```
+
+### Get Both at Once
+
+```{r example-info}
+get_party_info(urls)
+#> # A tibble: 2 x 3
+#>   url                                                      color   logo_url
+#>   <chr>                                                    <chr>   <chr>
+#> 1 https://en.wikipedia.org/wiki/Democratic_Party_(Unite... #0015BC https://...
+#> 2 https://en.wikipedia.org/wiki/Republican_Party_(Unite... #E81B23 https://...
+```
+
+### Use with dplyr
+
+```{r example-dplyr}
+library(dplyr)
+
+parties <- tibble(
+  party = c("Democrats", "Republicans"),
+  wiki_url = urls
+)
+
+parties %>%
+  mutate(color = get_party_color(wiki_url))
+#> # A tibble: 2 x 3
+#>   party       wiki_url                                               color
+#>   <chr>       <chr>                                                  <chr>
+#> 1 Democrats   https://en.wikipedia.org/wiki/Democratic_Party_(Un... #0015BC
+#> 2 Republicans https://en.wikipedia.org/wiki/Republican_Party_(Un... #E81B23
+```
+
+### Look Up Parties by Name
+
+Don't have Wikipedia URLs? Use the Partyfacts integration:
+
+```{r example-lookup}
+# Download Partyfacts data
+pf_data <- get_partyfacts_wikipedia()
+
+# Look up a party
+lookup_party_url("SPD", country = "DEU")
+
+# Or get the color directly
+get_party_color_by_name("SPD", country = "DEU")
+#> "#E3000F"
+```
+
+## How It Works
+
+The package scrapes the Wikipedia infobox (vcard table) for party pages,
+extracting:
+
+- **Colors**: From `<span>` elements with `background-color` style attributes
+- **Logos**: From the infobox image cell
+
+![Wikipedia party infobox example](partycolorR_example.png)
+
+## Related Resources
+
+- [Partyfacts](https://partyfacts.org/) - Links political science datasets
+- [ParlGov](http://www.parlgov.org/) - Parliament and government database
+- [Manifesto Project](https://manifesto-project.wzb.eu/) - Party manifestos
+
+## Citation
+
+If you use this package in your research, please cite it:
+
+```r
+citation("partycoloR")
+```
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request on
+[GitHub](https://github.com/lwarode/partycoloR).
+
+## License
+
+GPL-3

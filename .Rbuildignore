@@ -1,3 +1,11 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
+^LICENSE\.md$
+^data-raw$
+^\.github$
+^hexsticker_partycoloR\.R$
+^partycoloR_sticker\.png$
+^partycolorR_example\.png$
+^instructions_1\.txt$
+^\.claude$

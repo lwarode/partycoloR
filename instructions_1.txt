@@ -1,0 +1,23 @@
+I want to update my old R package in this folder/repo which extracted party colors from their Wikipedia pages.
+Make sure to read all instructions in the following in detail.
+
+I first want to give you a general overview:
+- A final goal would be publish the app on CRAN, however this is rather a future step
+- Currently there is only main function, it extracts the color(s) from the input English Wikipedia URL of a political party
+- The app mainly functions with a comprehensive list of party URLs, e.g. as used in my app here: https://github.com/lwarode/ParlGov_Dashboard/blob/main/ParlGov_Dashboard/party_color.R
+    - (here is the csv with the party URLs and other relevant party identifiers - make sure to download and safe it: https://raw.githubusercontent.com/hdigital/partyfactsdata/master/import/wikipedia/wikipedia.csv) 
+- Keep in mind that this project was written by (quantitative) political scientist, with the target audience of political scientists, e.g. party researchers
+
+What I want to add:
+- A second core function that extracts also the party logo
+- Probably other follow-up or helper function that make the core functions more workable (this is vague, I do not have a clear idea right now)
+- Have a better handling of several party colors (if a party has more than one color indicated) and a good inclusion of the function in the tidyverse/dplyr space, many users want to probably use it via dplyr::mutate()
+- A way better documentation and package standards
+- Tests with testthat
+
+Where I am not sure and want your estimation, in particular from a developer perspective:
+- Whether to change the input (from the Wikipedia URL) to maybe directly the party and already having the URL information stored in the package/functions itself
+
+Other important things:
+- Make sure that "Claude" is NOT mentioned as contributor on Git(Hub) in this project, e.g. when writing Git commits
+- Give me an indication what is missing if one want to publish this package on CRAN
