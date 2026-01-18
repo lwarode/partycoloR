@@ -135,7 +135,7 @@ extracting:
 ## Related Resources
 
 - [Party Facts](https://partyfacts.herokuapp.com/) - Party Facts links datasets on political parties across a wide range of social science datasets
-- [ParlGov](http://www.parlgov.org/) - Database on parties, elections and cabinets from EU and OECD democracies
+- [ParlGov](https://www.parlgov.org/) - Database on parties, elections and cabinets from EU and OECD democracies
 - [ParlGov Dashboard](https://lwarode.shinyapps.io/ParlGov_Dashboard/) - R Shiny dashboard with data from ParlGov and party colors from `partycoloR`
 
 ![ParlGov Dashboard](man/figures/ParlGov_Dashboard_Screenshot.jpeg)
