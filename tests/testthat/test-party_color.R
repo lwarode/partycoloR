@@ -37,7 +37,7 @@ test_that("get_party_color is vectorized", {
 # These are skipped on CRAN and in non-interactive sessions
 test_that("get_party_color extracts color from Wikipedia", {
   skip_on_cran()
-  skip_if_offline()
+  skip_on_ci_network()
 
   url <- "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"
   result <- get_party_color(url)
@@ -50,7 +50,7 @@ test_that("get_party_color extracts color from Wikipedia", {
 
 test_that("get_party_color handles multiple URLs", {
   skip_on_cran()
-  skip_if_offline()
+  skip_on_ci_network()
 
   urls <- c(
     "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
@@ -67,7 +67,7 @@ test_that("get_party_color handles multiple URLs", {
 
 test_that("get_party_color with all_colors returns multiple colors", {
   skip_on_cran()
-  skip_if_offline()
+  skip_on_ci_network()
 
   url <- "https://en.wikipedia.org/wiki/Christian_Democratic_Union_of_Germany"
   result <- get_party_color(url, all_colors = TRUE)

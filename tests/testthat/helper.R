@@ -12,3 +12,10 @@ skip_if_offline <- function() {
     }
   )
 }
+
+# Skip network tests on CI to avoid flaky builds
+# Wikipedia and GitHub may rate-limit or block CI runners
+skip_on_ci_network <- function() {
+  skip_on_ci()
+  skip_if_offline()
+}

@@ -2,6 +2,21 @@ url: https://lwarode.github.io/partycoloR/
 
 template:
   bootstrap: 5
+  bslib:
+    primary: "#0015BC"
+
+home:
+  sidebar:
+    structure: [links, license, community, citation, authors, dev]
+  links:
+  - text: Party Facts
+    href: https://partyfacts.herokuapp.com/
+  - text: ParlGov Dashboard
+    href: https://lwarode.shinyapps.io/ParlGov_Dashboard/
+
+authors:
+  Lukas Warode:
+    href: https://github.com/lwarode
 
 navbar:
   structure:
@@ -20,12 +35,14 @@ reference:
   - get_party_logo
   - get_party_info
 
-- title: Partyfacts Integration
+- title: Party Facts Integration
   desc: Look up parties by name
   contents:
   - get_partyfacts_wikipedia
   - lookup_party_url
   - get_party_color_by_name
+  - get_party_logo_by_name
+  - get_party_info_by_name
   - clear_partycolor_cache
 
 - title: Other

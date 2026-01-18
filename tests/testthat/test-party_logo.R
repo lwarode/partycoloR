@@ -30,7 +30,7 @@ test_that("get_party_logo is vectorized", {
 # Integration tests that require network access
 test_that("get_party_logo extracts logo from Wikipedia", {
   skip_on_cran()
-  skip_if_offline()
+  skip_on_ci_network()
 
   url <- "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"
   result <- get_party_logo(url)
@@ -43,7 +43,7 @@ test_that("get_party_logo extracts logo from Wikipedia", {
 
 test_that("get_party_logo handles multiple URLs", {
   skip_on_cran()
-  skip_if_offline()
+  skip_on_ci_network()
 
   urls <- c(
     "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",

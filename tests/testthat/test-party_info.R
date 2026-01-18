@@ -36,7 +36,7 @@ test_that("get_party_info handles multiple URLs", {
 # Integration tests
 test_that("get_party_info extracts both color and logo", {
   skip_on_cran()
-  skip_if_offline()
+  skip_on_ci_network()
 
   url <- "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"
   result <- get_party_info(url)
@@ -56,7 +56,7 @@ test_that("get_party_info extracts both color and logo", {
 
 test_that("get_party_info handles multiple URLs efficiently", {
   skip_on_cran()
-  skip_if_offline()
+  skip_on_ci_network()
 
   urls <- c(
     "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",

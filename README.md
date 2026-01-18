@@ -18,7 +18,7 @@ parties in data visualizations and research.
 - Extract party colors (HEX codes) from Wikipedia infoboxes
 - Extract party logo URLs
 - Handle parties with multiple colors
-- Integrate with the [Partyfacts](https://partyfacts.herokuapp.com/) database for party lookups
+- Integrate with the [Party Facts](https://partyfacts.herokuapp.com/) database for party lookups
 - Works seamlessly with dplyr/tidyverse workflows
 
 ## Installation
@@ -55,6 +55,10 @@ get_party_color(urls)
 ``` r
 get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
 #> "https://upload.wikimedia.org/wikipedia/commons/thumb/..."
+
+# Download a logo to file
+get_party_logo_by_name("SPD", country = "DEU") %>%
+  download_party_logo("spd_logo.svg")
 ```
 
 ### Get Both at Once
@@ -115,9 +119,11 @@ extracting:
 
 ## Related Resources
 
-- [Partyfacts](https://partyfacts.herokuapp.com/) - Links political science datasets
-- [ParlGov](http://www.parlgov.org/) - Parliament and government database
-- [Manifesto Project](https://manifesto-project.wzb.eu/) - Party manifestos
+- [Party Facts](https://partyfacts.herokuapp.com/) - Party Facts links datasets on political parties across a wide range of social science datasets
+- [ParlGov](http://www.parlgov.org/) - Database on parties, elections and cabinets from EU and OECD democracies
+- [ParlGov Dashboard](https://lwarode.shinyapps.io/ParlGov_Dashboard/) - R Shiny dashboard with data from ParlGov and party colors from `partycoloR`
+
+![ParlGov Dashboard](ParlGov_Dashboard_Screenshot.jpeg)
 
 ## Citation
 

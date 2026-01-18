@@ -71,6 +71,23 @@ get_party_logo(dem_url)
 #> "https://upload.wikimedia.org/wikipedia/commons/thumb/..."
 ```
 
+### Downloading Party Logos
+
+You can download logos to a local file using `download_party_logo()`:
+
+```{r download-logo}
+# Get logo URL and download it
+logo_url <- get_party_logo(dem_url)
+download_party_logo(logo_url, "democratic_logo.png")
+
+# Or use a pipeline with get_party_logo_by_name()
+get_party_logo_by_name("SPD", country = "DEU") %>%
+  download_party_logo("spd_logo.svg")
+```
+
+Note that the file extension should match the actual image format. Many Wikipedia
+logos are SVGs, so check the URL to determine the correct extension.
+
 ### Getting Both at Once
 
 For efficiency, use `get_party_info()` to extract both color and logo in a
@@ -152,15 +169,15 @@ german_parties %>%
 #> 3 SPD   https://en.wikipedia.org/wiki/Social_Democratic_Pa...  #E3000F
 ```
 
-## Using Partyfacts Integration
+## Using Party Facts Integration
 
 If you don't have Wikipedia URLs, you can look up parties by name using the
-[Partyfacts](https://partyfacts.herokuapp.com/) database integration.
+[Party Facts](https://partyfacts.herokuapp.com/) database integration.
 
-### Download Partyfacts Data
+### Download Party Facts Data
 
 ```{r partyfacts-download}
-# Download the current Partyfacts Wikipedia dataset
+# Download the current Party Facts Wikipedia dataset
 pf_data <- get_partyfacts_wikipedia()
 head(pf_data)
 #> # A tibble: 6 x 8
@@ -261,7 +278,7 @@ get_party_color(urls)
 
 ## Caching
 
-The Partyfacts data is cached in the R session to avoid repeated downloads:
+The Party Facts data is cached in the R session to avoid repeated downloads:
 
 ```{r caching}
 # First call downloads the data
@@ -279,7 +296,7 @@ clear_partycolor_cache()
 1. **Batch requests**: When processing many parties, pass all URLs to
    `get_party_color()` at once rather than calling it in a loop.
 
-2. **Cache Partyfacts data**: If you'll be doing multiple lookups, call
+2. **Cache Party Facts data**: If you'll be doing multiple lookups, call
    `get_partyfacts_wikipedia()` once and pass the result to `lookup_party_url()`.
 
 3. **Handle missing data**: Always check for NA values in the results, as some
@@ -291,8 +308,6 @@ clear_partycolor_cache()
 
 ## Related Resources
 
-- [Partyfacts](https://partyfacts.herokuapp.com/) - The source for party identifiers
-  and Wikipedia URLs
-- [ParlGov](http://www.parlgov.org/) - Parliament and government database
-- [Manifesto Project](https://manifesto-project.wzb.eu/) - Party manifestos
-  and positions
+- [Party Facts](https://partyfacts.herokuapp.com/) - Party Facts links datasets on political parties across a wide range of social science datasets
+- [ParlGov](http://www.parlgov.org/) - Database on parties, elections and cabinets from EU and OECD democracies
+- [ParlGov Dashboard](https://lwarode.shinyapps.io/ParlGov_Dashboard/) - R Shiny dashboard with data from ParlGov and party colors from `partycoloR`

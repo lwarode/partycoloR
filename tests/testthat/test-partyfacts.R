@@ -93,7 +93,7 @@ test_that("clear_partycolor_cache clears cache", {
 # Integration tests
 test_that("get_partyfacts_wikipedia downloads data", {
   skip_on_cran()
-  skip_if_offline()
+  skip_on_ci_network()
 
   # Clear cache first
   clear_partycolor_cache()
@@ -110,7 +110,7 @@ test_that("get_partyfacts_wikipedia downloads data", {
 test_that("get_partyfacts_wikipedia uses cache",
 {
   skip_on_cran()
-  skip_if_offline()
+  skip_on_ci_network()
 
   # First call should populate cache
   result1 <- get_partyfacts_wikipedia(cache = TRUE)
