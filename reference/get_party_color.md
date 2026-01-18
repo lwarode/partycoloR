@@ -1,0 +1,72 @@
+# Extract party color from Wikipedia
+
+Extracts the primary party color (or all colors) from a political
+party's English Wikipedia page. The function scrapes the party infobox
+for color information.
+
+## Usage
+
+``` r
+get_party_color(url, all_colors = FALSE, normalize = TRUE)
+```
+
+## Arguments
+
+- url:
+
+  A character vector of Wikipedia URLs for political party pages.
+
+- all_colors:
+
+  Logical. If \`FALSE\` (default), returns only the first/primary color.
+  If \`TRUE\`, returns all colors as a list.
+
+- normalize:
+
+  Logical. If \`TRUE\` (default), attempts to normalize color values to
+  uppercase hex codes. Named colors (e.g., "red") are converted to hex
+  codes.
+
+## Value
+
+If \`all_colors = FALSE\`, a character vector of hex color codes (or NA
+for failed extractions). If \`all_colors = TRUE\`, a list of character
+vectors containing all colors for each URL.
+
+## Details
+
+The function works by scraping the Wikipedia infobox (vcard table) for
+spans with background-color style attributes. This depends on
+Wikipedia's current HTML structure and may occasionally fail if the page
+structure changes.
+
+For use with \`dplyr::mutate()\`, this function is vectorized over the
+\`url\` argument. Each URL is processed independently.
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+# Single party
+get_party_color("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+
+# Multiple parties
+urls <- c(
+  "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+  "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
+)
+get_party_color(urls)
+
+# Get all colors (some parties have multiple)
+get_party_color(urls, all_colors = TRUE)
+
+# Use with dplyr
+library(dplyr)
+parties <- tibble(
+  party = c("Democrats", "Republicans"),
+  wiki_url = urls
+)
+parties %>%
+  mutate(color = get_party_color(wiki_url))
+} # }
+```
