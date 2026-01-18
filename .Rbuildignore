@@ -9,3 +9,6 @@
 ^partycolorR_example\.png$
 ^instructions_1\.txt$
 ^\.claude$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

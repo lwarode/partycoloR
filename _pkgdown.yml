@@ -1,0 +1,34 @@
+url: https://lwarode.github.io/partycoloR/
+
+template:
+  bootstrap: 5
+
+navbar:
+  structure:
+    left: [intro, reference, articles]
+    right: [search, github]
+  components:
+    github:
+      icon: fa-github
+      href: https://github.com/lwarode/partycoloR
+
+reference:
+- title: Core Functions
+  desc: Extract colors and logos from Wikipedia
+  contents:
+  - get_party_color
+  - get_party_logo
+  - get_party_info
+
+- title: Partyfacts Integration
+  desc: Look up parties by name
+  contents:
+  - get_partyfacts_wikipedia
+  - lookup_party_url
+  - get_party_color_by_name
+  - clear_partycolor_cache
+
+- title: Other
+  contents:
+  - download_party_logo
+  - wikipedia_party_color
