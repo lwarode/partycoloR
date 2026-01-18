@@ -98,7 +98,8 @@ get_party_info(urls)
 
 ## Working with dplyr
 
-The functions are designed to work seamlessly with `dplyr::mutate()`:
+The functions are designed to work seamlessly with
+[`dplyr::mutate()`](https://dplyr.tidyverse.org/reference/mutate.html):
 
 ``` r
 parties <- tibble(

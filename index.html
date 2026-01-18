@@ -128,13 +128,13 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">parties</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
+<span><span class="va">parties</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span>  party <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Democrats"</span>, <span class="st">"Republicans"</span><span class="op">)</span>,</span>
 <span>  wiki_url <span class="op">=</span> <span class="va">urls</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">parties</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="va">wiki_url</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">parties</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="va">wiki_url</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 2 x 3</span></span>
 <span><span class="co">#&gt;   party       wiki_url                                               color</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;                                                  &lt;chr&gt;</span></span>

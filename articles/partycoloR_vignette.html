@@ -130,7 +130,7 @@ image:</p>
 <span><span class="fu"><a href="../reference/download_party_logo.html">download_party_logo</a></span><span class="op">(</span><span class="va">logo_url</span>, <span class="st">"democratic_logo.png"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Or use a pipeline with get_party_logo_by_name()</span></span>
-<span><span class="fu"><a href="../reference/get_party_logo_by_name.html">get_party_logo_by_name</a></span><span class="op">(</span><span class="st">"SPD"</span>, country <span class="op">=</span> <span class="st">"DEU"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span><span class="fu"><a href="../reference/get_party_logo_by_name.html">get_party_logo_by_name</a></span><span class="op">(</span><span class="st">"SPD"</span>, country <span class="op">=</span> <span class="st">"DEU"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/download_party_logo.html">download_party_logo</a></span><span class="op">(</span><span class="st">"spd_logo.svg"</span><span class="op">)</span></span></code></pre></div>
 <p>Note that the file extension should match the actual image format.
 Many Wikipedia logos are SVGs, so check the URL to determine the correct
@@ -155,9 +155,9 @@ color and logo in a single request:</p>
 <h2 id="working-with-dplyr">Working with dplyr<a class="anchor" aria-label="anchor" href="#working-with-dplyr"></a>
 </h2>
 <p>The functions are designed to work seamlessly with
-<code>dplyr::mutate()</code>:</p>
+<code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">dplyr::mutate()</a></code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">parties</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">parties</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span>  party <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Democrats"</span>, <span class="st">"Republicans"</span>, <span class="st">"Greens"</span><span class="op">)</span>,</span>
 <span>  wiki_url <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>    <span class="st">"https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"</span>,</span>
@@ -166,8 +166,8 @@ color and logo in a single request:</p>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">parties</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span><span class="va">parties</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    color <span class="op">=</span> <span class="fu"><a href="../reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="va">wiki_url</span><span class="op">)</span>,</span>
 <span>    logo <span class="op">=</span> <span class="fu"><a href="../reference/get_party_logo.html">get_party_logo</a></span><span class="op">(</span><span class="va">wiki_url</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
@@ -180,7 +180,7 @@ colors:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">german_parties</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
+<span><span class="va">german_parties</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span>  party <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"CDU"</span>, <span class="st">"SPD"</span><span class="op">)</span>,</span>
 <span>  wiki_url <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>    <span class="st">"https://en.wikipedia.org/wiki/Christian_Democratic_Union_of_Germany"</span>,</span>
@@ -190,7 +190,7 @@ colors:</p>
 <span></span>
 <span><span class="co"># Extract all colors as a list-column, then extract individual colors</span></span>
 <span><span class="va">german_parties</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    all_colors <span class="op">=</span> <span class="fu"><a href="../reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="va">wiki_url</span>, all_colors <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    color_1 <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="va">all_colors</span>, <span class="va">pluck</span>, <span class="fl">1</span>, <span class="fl">1</span>, .default <span class="op">=</span> <span class="cn">NA_character_</span><span class="op">)</span>,</span>
 <span>    color_2 <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="va">all_colors</span>, <span class="va">pluck</span>, <span class="fl">1</span>, <span class="fl">2</span>, .default <span class="op">=</span> <span class="cn">NA_character_</span><span class="op">)</span></span>
@@ -203,9 +203,9 @@ colors:</p>
 <p>Alternatively, unnest to long format (one row per color):</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">german_parties</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>all_colors <span class="op">=</span> <span class="fu"><a href="../reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="va">wiki_url</span>, all_colors <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu">unnest_longer</span><span class="op">(</span><span class="va">all_colors</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu">unnest_longer</span><span class="op">(</span><span class="va">all_colors</span>, values_to <span class="op">=</span> <span class="st">"color"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>all_colors <span class="op">=</span> <span class="fu"><a href="../reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="va">wiki_url</span>, all_colors <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html" class="external-link">unnest_longer</a></span><span class="op">(</span><span class="va">all_colors</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest_longer.html" class="external-link">unnest_longer</a></span><span class="op">(</span><span class="va">all_colors</span>, values_to <span class="op">=</span> <span class="st">"color"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 x 3</span></span>
 <span><span class="co">#&gt;   party wiki_url                                               color</span></span>
 <span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                                                  &lt;chr&gt;</span></span>
@@ -272,7 +272,7 @@ color extraction:</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Example data: German 2021 election results</span></span>
-<span><span class="va">german_parties</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
+<span><span class="va">german_parties</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
 <span>  party <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SPD"</span>, <span class="st">"CDU/CSU"</span>, <span class="st">"Greens"</span>, <span class="st">"FDP"</span>, <span class="st">"AfD"</span>, <span class="st">"Left"</span><span class="op">)</span>,</span>
 <span>  vote_share <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">25.7</span>, <span class="fl">24.1</span>, <span class="fl">14.8</span>, <span class="fl">11.5</span>, <span class="fl">10.3</span>, <span class="fl">4.9</span><span class="op">)</span>,</span>
 <span>  wiki_url <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -287,7 +287,7 @@ color extraction:</p>
 <span></span>
 <span><span class="co"># Get party colors</span></span>
 <span><span class="va">german_parties</span> <span class="op">&lt;-</span> <span class="va">german_parties</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="../reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="va">wiki_url</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="../reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="va">wiki_url</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Create bar chart with party colors</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">german_parties</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></span><span class="op">(</span><span class="va">party</span>, <span class="op">-</span><span class="va">vote_share</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">vote_share</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>

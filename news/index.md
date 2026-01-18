@@ -31,7 +31,7 @@
 ### Improvements
 
 - Functions are now fully vectorized and work seamlessly with
-  `dplyr::mutate()`.
+  [`dplyr::mutate()`](https://dplyr.tidyverse.org/reference/mutate.html).
 
 - Better error handling - invalid URLs return NA instead of throwing
   errors.
