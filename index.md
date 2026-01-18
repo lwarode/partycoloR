@@ -9,8 +9,8 @@ identifying political parties in data visualizations and research.
 - Extract party colors (HEX codes) from Wikipedia infoboxes
 - Extract party logo URLs
 - Handle parties with multiple colors
-- Integrate with the [Partyfacts](https://partyfacts.org/) database for
-  party lookups
+- Integrate with the [Partyfacts](https://partyfacts.herokuapp.com/)
+  database for party lookups
 - Works seamlessly with dplyr/tidyverse workflows
 
 ## Installation
@@ -111,8 +111,8 @@ Wikipedia party infobox example
 
 ## Related Resources
 
-- [Partyfacts](https://partyfacts.org/) - Links political science
-  datasets
+- [Partyfacts](https://partyfacts.herokuapp.com/) - Links political
+  science datasets
 - [ParlGov](http://www.parlgov.org/) - Parliament and government
   database
 - [Manifesto Project](https://manifesto-project.wzb.eu/) - Party

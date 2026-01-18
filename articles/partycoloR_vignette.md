@@ -146,7 +146,8 @@ german_parties %>%
 ## Using Partyfacts Integration
 
 If you don’t have Wikipedia URLs, you can look up parties by name using
-the [Partyfacts](https://partyfacts.org/) database integration.
+the [Partyfacts](https://partyfacts.herokuapp.com/) database
+integration.
 
 ### Download Partyfacts Data
 
@@ -289,7 +290,7 @@ clear_partycolor_cache()
 
 ## Related Resources
 
-- [Partyfacts](https://partyfacts.org/) - The source for party
+- [Partyfacts](https://partyfacts.herokuapp.com/) - The source for party
   identifiers and Wikipedia URLs
 - [ParlGov](http://www.parlgov.org/) - Parliament and government
   database
