@@ -12,7 +12,7 @@ home:
   - text: Party Facts
     href: https://partyfacts.herokuapp.com/
   - text: ParlGov Dashboard
-    href: https://lwarode.shinyapps.io/ParlGov_Dashboard/
+    href: https://lukas-warode.shinyapps.io/ParlGov_Dashboard/
 
 authors:
   Lukas Warode:
