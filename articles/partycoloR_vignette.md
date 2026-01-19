@@ -316,6 +316,7 @@ clear_partycolor_cache()
   datasets
 - [ParlGov](https://www.parlgov.org/) - Database on parties, elections
   and cabinets from EU and OECD democracies
-- [ParlGov Dashboard](https://lwarode.shinyapps.io/ParlGov_Dashboard/) -
-  R Shiny dashboard with data from ParlGov and party colors from
+- [ParlGov
+  Dashboard](https://lukas-warode.shinyapps.io/ParlGov_Dashboard/) - R
+  Shiny dashboard with data from ParlGov and party colors from
   `partycoloR`
