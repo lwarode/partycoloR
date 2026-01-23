@@ -20,10 +20,14 @@ Invisible `TRUE` if successful, `FALSE` otherwise.
 Downloads a party logo image from a URL and saves it to a file.
 }
 \examples{
-\dontrun{
-logo_url <- get_party_logo(
-  "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"
-)
-download_party_logo(logo_url, "democratic_logo.png")
+\donttest{
+if (curl::has_internet()) {
+  logo_url <- get_party_logo(
+    "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"
+  )
+  tmp_file <- tempfile(fileext = ".png")
+  download_party_logo(logo_url, tmp_file)
+  unlink(tmp_file)
+}
 }
 }

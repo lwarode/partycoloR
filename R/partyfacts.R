@@ -20,12 +20,14 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' # Download the dataset
-#' pf_data <- get_partyfacts_wikipedia()
+#' \donttest{
+#' if (curl::has_internet()) {
+#'   # Download the dataset
+#'   pf_data <- get_partyfacts_wikipedia()
 #'
-#' # View parties from Germany
-#' pf_data[pf_data$country == "DEU", ]
+#'   # View parties from Germany
+#'   pf_data[pf_data$country == "DEU", ]
+#' }
 #' }
 get_partyfacts_wikipedia <- function(cache = TRUE) {
   # Check cache
@@ -79,15 +81,17 @@ get_partyfacts_wikipedia <- function(cache = TRUE) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' # Search for parties with "Democratic" in the name
-#' lookup_party_url("Democratic")
+#' \donttest{
+#' if (curl::has_internet()) {
+#'   # Search for parties with "Democratic" in the name
+#'   lookup_party_url("Democratic")
 #'
-#' # Search within a specific country
-#' lookup_party_url("SPD", country = "DEU")
+#'   # Search within a specific country
+#'   lookup_party_url("SPD", country = "DEU")
 #'
-#' # Exact match
-#' lookup_party_url("CDU", country = "DEU", exact = TRUE)
+#'   # Exact match
+#'   lookup_party_url("CDU", country = "DEU", exact = TRUE)
+#' }
 #' }
 lookup_party_url <- function(party_name, country = NULL, data = NULL, exact = FALSE) {
   if (!is.character(party_name) || length(party_name) != 1) {
@@ -143,12 +147,14 @@ lookup_party_url <- function(party_name, country = NULL, data = NULL, exact = FA
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' # Get color for German SPD
-#' get_party_color_by_name("SPD", country = "DEU")
+#' \donttest{
+#' if (curl::has_internet()) {
+#'   # Get color for German SPD
+#'   get_party_color_by_name("SPD", country = "DEU")
 #'
-#' # Search more broadly
-#' get_party_color_by_name("Labour", country = "GBR")
+#'   # Search more broadly
+#'   get_party_color_by_name("Labour", country = "GBR")
+#' }
 #' }
 get_party_color_by_name <- function(party_name, country = NULL, all_colors = FALSE,
                                     data = NULL) {
@@ -191,12 +197,14 @@ get_party_color_by_name <- function(party_name, country = NULL, all_colors = FAL
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' # Get logo for German SPD
-#' get_party_logo_by_name("SPD", country = "DEU")
+#' \donttest{
+#' if (curl::has_internet()) {
+#'   # Get logo for German SPD
+#'   get_party_logo_by_name("SPD", country = "DEU")
 #'
-#' # Search more broadly
-#' get_party_logo_by_name("Labour", country = "GBR")
+#'   # Search more broadly
+#'   get_party_logo_by_name("Labour", country = "GBR")
+#' }
 #' }
 get_party_logo_by_name <- function(party_name, country = NULL, data = NULL) {
   # Look up the party
@@ -235,12 +243,14 @@ get_party_logo_by_name <- function(party_name, country = NULL, data = NULL) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' # Get info for German SPD
-#' get_party_info_by_name("SPD", country = "DEU")
+#' \donttest{
+#' if (curl::has_internet()) {
+#'   # Get info for German SPD
+#'   get_party_info_by_name("SPD", country = "DEU")
 #'
-#' # Search more broadly with all colors
-#' get_party_info_by_name("Labour", country = "GBR", all_colors = TRUE)
+#'   # Search more broadly with all colors
+#'   get_party_info_by_name("Labour", country = "GBR", all_colors = TRUE)
+#' }
 #' }
 get_party_info_by_name <- function(party_name, country = NULL, all_colors = FALSE,
                                    data = NULL) {

@@ -26,14 +26,16 @@ A tibble with matching parties and their Wikipedia URLs.
 Search the Partyfacts Wikipedia dataset for a party by name and/or country.
 }
 \examples{
-\dontrun{
-# Search for parties with "Democratic" in the name
-lookup_party_url("Democratic")
+\donttest{
+if (curl::has_internet()) {
+  # Search for parties with "Democratic" in the name
+  lookup_party_url("Democratic")
 
-# Search within a specific country
-lookup_party_url("SPD", country = "DEU")
+  # Search within a specific country
+  lookup_party_url("SPD", country = "DEU")
 
-# Exact match
-lookup_party_url("CDU", country = "DEU", exact = TRUE)
+  # Exact match
+  lookup_party_url("CDU", country = "DEU", exact = TRUE)
+}
 }
 }

@@ -11,6 +11,8 @@ Description: Extract political party colors and logos from English Wikipedia
     (HEX or HTML color names) and logo images. Includes integration with the
     Party Facts database for easy party lookups. Designed for political
     scientists and party researchers working with electoral and party data.
+    For Party Facts, see Döring and Regel (2019) <doi:10.1177/1354068818820671>
+    and Bederke, Döring, and Regel (2023) <doi:10.7910/DVN/TJINLQ>.
 License: GPL-3
 Encoding: UTF-8
 RoxygenNote: 7.3.3

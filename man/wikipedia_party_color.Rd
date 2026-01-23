@@ -18,11 +18,13 @@ A data frame / tibble containing extracted color codes from Wikipedia
 This function is deprecated. Please use [get_party_color()] instead.
 }
 \examples{
-\dontrun{
-party_list <- c(
-  "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
-  "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
-)
-wikipedia_party_color(party_list)
+\donttest{
+if (curl::has_internet()) {
+  party_list <- c(
+    "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+    "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
+  )
+  wikipedia_party_color(party_list)
+}
 }
 }

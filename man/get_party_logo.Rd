@@ -29,24 +29,17 @@ For use with `dplyr::mutate()`, this function is vectorized over the `url`
 argument.
 }
 \examples{
-\dontrun{
-# Single party
-get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+\donttest{
+if (curl::has_internet()) {
+  # Single party
+  get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
 
-# Multiple parties
-urls <- c(
-  "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
-  "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
-)
-get_party_logo(urls)
-
-# Use with dplyr
-library(dplyr)
-parties <- tibble(
-  party = c("Democrats", "Republicans"),
-  wiki_url = urls
-)
-parties \%>\%
-  mutate(logo_url = get_party_logo(wiki_url))
+  # Multiple parties
+  urls <- c(
+    "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+    "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
+  )
+  get_party_logo(urls)
+}
 }
 }

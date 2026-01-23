@@ -18,17 +18,19 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' # Get info for multiple parties
-#' urls <- c(
-#'   "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
-#'   "https://en.wikipedia.org/wiki/Republican_Party_(United_States)",
-#'   "https://en.wikipedia.org/wiki/Social_Democratic_Party_of_Germany"
-#' )
-#' get_party_info(urls)
+#' \donttest{
+#' if (curl::has_internet()) {
+#'   # Get info for multiple parties
+#'   urls <- c(
+#'     "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+#'     "https://en.wikipedia.org/wiki/Republican_Party_(United_States)",
+#'     "https://en.wikipedia.org/wiki/Social_Democratic_Party_of_Germany"
+#'   )
+#'   get_party_info(urls)
 #'
-#' # Include all colors
-#' get_party_info(urls, all_colors = TRUE)
+#'   # Include all colors
+#'   get_party_info(urls, all_colors = TRUE)
+#' }
 #' }
 get_party_info <- function(url, all_colors = FALSE) {
   # Validate input

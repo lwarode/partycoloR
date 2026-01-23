@@ -22,25 +22,18 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' # Single party
-#' get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+#' \donttest{
+#' if (curl::has_internet()) {
+#'   # Single party
+#'   get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
 #'
-#' # Multiple parties
-#' urls <- c(
-#'   "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
-#'   "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
-#' )
-#' get_party_logo(urls)
-#'
-#' # Use with dplyr
-#' library(dplyr)
-#' parties <- tibble(
-#'   party = c("Democrats", "Republicans"),
-#'   wiki_url = urls
-#' )
-#' parties %>%
-#'   mutate(logo_url = get_party_logo(wiki_url))
+#'   # Multiple parties
+#'   urls <- c(
+#'     "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+#'     "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
+#'   )
+#'   get_party_logo(urls)
+#' }
 #' }
 get_party_logo <- function(url) {
   # Validate input
@@ -74,11 +67,15 @@ get_party_logo <- function(url) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' logo_url <- get_party_logo(
-#'   "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"
-#' )
-#' download_party_logo(logo_url, "democratic_logo.png")
+#' \donttest{
+#' if (curl::has_internet()) {
+#'   logo_url <- get_party_logo(
+#'     "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"
+#'   )
+#'   tmp_file <- tempfile(fileext = ".png")
+#'   download_party_logo(logo_url, tmp_file)
+#'   unlink(tmp_file)
+#' }
 #' }
 download_party_logo <- function(logo_url, destfile, overwrite = FALSE) {
   if (is.na(logo_url) || logo_url == "") {

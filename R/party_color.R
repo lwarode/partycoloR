@@ -26,28 +26,21 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' # Single party
-#' get_party_color("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+#' \donttest{
+#' if (curl::has_internet()) {
+#'   # Single party
+#'   get_party_color("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
 #'
-#' # Multiple parties
-#' urls <- c(
-#'   "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
-#'   "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
-#' )
-#' get_party_color(urls)
+#'   # Multiple parties
+#'   urls <- c(
+#'     "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+#'     "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
+#'   )
+#'   get_party_color(urls)
 #'
-#' # Get all colors (some parties have multiple)
-#' get_party_color(urls, all_colors = TRUE)
-#'
-#' # Use with dplyr
-#' library(dplyr)
-#' parties <- tibble(
-#'   party = c("Democrats", "Republicans"),
-#'   wiki_url = urls
-#' )
-#' parties %>%
-#'   mutate(color = get_party_color(wiki_url))
+#'   # Get all colors (some parties have multiple)
+#'   get_party_color(urls, all_colors = TRUE)
+#' }
 #' }
 get_party_color <- function(url, all_colors = FALSE, normalize = TRUE) {
   # Validate input
@@ -117,12 +110,14 @@ get_party_color <- function(url, all_colors = FALSE, normalize = TRUE) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' party_list <- c(
-#'   "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
-#'   "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
-#' )
-#' wikipedia_party_color(party_list)
+#' \donttest{
+#' if (curl::has_internet()) {
+#'   party_list <- c(
+#'     "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+#'     "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
+#'   )
+#'   wikipedia_party_color(party_list)
+#' }
 #' }
 wikipedia_party_color <- function(party_url_list) {
   .Deprecated("get_party_color")

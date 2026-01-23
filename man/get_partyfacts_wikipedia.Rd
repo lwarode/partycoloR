@@ -25,12 +25,14 @@ Wikipedia URLs for political parties. The data is downloaded from the
 Partyfacts GitHub repository.
 }
 \examples{
-\dontrun{
-# Download the dataset
-pf_data <- get_partyfacts_wikipedia()
+\donttest{
+if (curl::has_internet()) {
+  # Download the dataset
+  pf_data <- get_partyfacts_wikipedia()
 
-# View parties from Germany
-pf_data[pf_data$country == "DEU", ]
+  # View parties from Germany
+  pf_data[pf_data$country == "DEU", ]
+}
 }
 }
 \seealso{

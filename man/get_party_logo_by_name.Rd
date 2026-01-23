@@ -24,11 +24,13 @@ Searches for a party by name, finds its Wikipedia URL, and extracts the
 party logo URL.
 }
 \examples{
-\dontrun{
-# Get logo for German SPD
-get_party_logo_by_name("SPD", country = "DEU")
+\donttest{
+if (curl::has_internet()) {
+  # Get logo for German SPD
+  get_party_logo_by_name("SPD", country = "DEU")
 
-# Search more broadly
-get_party_logo_by_name("Labour", country = "GBR")
+  # Search more broadly
+  get_party_logo_by_name("Labour", country = "GBR")
+}
 }
 }

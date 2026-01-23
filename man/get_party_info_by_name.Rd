@@ -31,11 +31,13 @@ extraction. Searches for a party by name, finds its Wikipedia URL, and
 extracts both color and logo.
 }
 \examples{
-\dontrun{
-# Get info for German SPD
-get_party_info_by_name("SPD", country = "DEU")
+\donttest{
+if (curl::has_internet()) {
+  # Get info for German SPD
+  get_party_info_by_name("SPD", country = "DEU")
 
-# Search more broadly with all colors
-get_party_info_by_name("Labour", country = "GBR", all_colors = TRUE)
+  # Search more broadly with all colors
+  get_party_info_by_name("Labour", country = "GBR", all_colors = TRUE)
+}
 }
 }
