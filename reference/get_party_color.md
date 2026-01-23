@@ -46,27 +46,30 @@ For use with \`dplyr::mutate()\`, this function is vectorized over the
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-# Single party
-get_party_color("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+# \donttest{
+if (curl::has_internet()) {
+  # Single party
+  get_party_color("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
 
-# Multiple parties
-urls <- c(
-  "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
-  "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
-)
-get_party_color(urls)
+  # Multiple parties
+  urls <- c(
+    "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+    "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
+  )
+  get_party_color(urls)
 
-# Get all colors (some parties have multiple)
-get_party_color(urls, all_colors = TRUE)
-
-# Use with dplyr
-library(dplyr)
-parties <- tibble(
-  party = c("Democrats", "Republicans"),
-  wiki_url = urls
-)
-parties %>%
-  mutate(color = get_party_color(wiki_url))
-} # }
+  # Get all colors (some parties have multiple)
+  get_party_color(urls, all_colors = TRUE)
+}
+#> [[1]]
+#> [[1]][[1]]
+#> [1] "#3333FF"
+#> 
+#> 
+#> [[2]]
+#> [[2]][[1]]
+#> [1] "#E81B23"
+#> 
+#> 
+# }
 ```

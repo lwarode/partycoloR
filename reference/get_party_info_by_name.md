@@ -42,11 +42,25 @@ with zero rows if no party is found.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-# Get info for German SPD
-get_party_info_by_name("SPD", country = "DEU")
+# \donttest{
+if (curl::has_internet()) {
+  # Get info for German SPD
+  get_party_info_by_name("SPD", country = "DEU")
 
-# Search more broadly with all colors
-get_party_info_by_name("Labour", country = "GBR", all_colors = TRUE)
-} # }
+  # Search more broadly with all colors
+  get_party_info_by_name("Labour", country = "GBR", all_colors = TRUE)
+}
+#> # A tibble: 7 × 11
+#>   country partyfacts_id url            name_short name  name_native year_founded
+#>   <chr>           <int> <chr>          <chr>      <chr> <chr>              <int>
+#> 1 GBR               234 https://en.wi… ILP        Inde… NA                  1893
+#> 2 GBR              1516 https://en.wi… Lab        Labo… Labour Par…         1900
+#> 3 GBR              2121 https://en.wi… NA         Nati… NA                  1918
+#> 4 GBR              2122 https://en.wi… NLO        Nati… NA                  1931
+#> 5 GBR              8757 https://en.wi… NILP       Nort… NA                  1924
+#> 6 GBR               762 https://en.wi… SDLP       Soci… Páirtí Sói…         1970
+#> 7 GBR              1277 https://en.wi… NA         Soci… NA                  1996
+#> # ℹ 4 more variables: year_dissolved <int>, color <chr>, logo_url <chr>,
+#> #   all_colors <list>
+# }
 ```

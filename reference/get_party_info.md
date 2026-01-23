@@ -34,16 +34,24 @@ information as it only fetches each Wikipedia page once.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-# Get info for multiple parties
-urls <- c(
-  "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
-  "https://en.wikipedia.org/wiki/Republican_Party_(United_States)",
-  "https://en.wikipedia.org/wiki/Social_Democratic_Party_of_Germany"
-)
-get_party_info(urls)
+# \donttest{
+if (curl::has_internet()) {
+  # Get info for multiple parties
+  urls <- c(
+    "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+    "https://en.wikipedia.org/wiki/Republican_Party_(United_States)",
+    "https://en.wikipedia.org/wiki/Social_Democratic_Party_of_Germany"
+  )
+  get_party_info(urls)
 
-# Include all colors
-get_party_info(urls, all_colors = TRUE)
-} # }
+  # Include all colors
+  get_party_info(urls, all_colors = TRUE)
+}
+#> # A tibble: 3 × 4
+#>   url                                                  color logo_url all_colors
+#>   <chr>                                                <chr> <chr>    <list>    
+#> 1 https://en.wikipedia.org/wiki/Democratic_Party_(Uni… #333… https:/… <chr [1]> 
+#> 2 https://en.wikipedia.org/wiki/Republican_Party_(Uni… #E81… https:/… <chr [1]> 
+#> 3 https://en.wikipedia.org/wiki/Social_Democratic_Par… #E30… https:/… <chr [1]> 
+# }
 ```

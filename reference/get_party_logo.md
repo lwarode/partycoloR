@@ -38,24 +38,19 @@ For use with \`dplyr::mutate()\`, this function is vectorized over the
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-# Single party
-get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+# \donttest{
+if (curl::has_internet()) {
+  # Single party
+  get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
 
-# Multiple parties
-urls <- c(
-  "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
-  "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
-)
-get_party_logo(urls)
-
-# Use with dplyr
-library(dplyr)
-parties <- tibble(
-  party = c("Democrats", "Republicans"),
-  wiki_url = urls
-)
-parties %>%
-  mutate(logo_url = get_party_logo(wiki_url))
-} # }
+  # Multiple parties
+  urls <- c(
+    "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+    "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
+  )
+  get_party_logo(urls)
+}
+#> [1] "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/US_Democratic_Party_2025_logo_%28positive%29.svg/330px-US_Democratic_Party_2025_logo_%28positive%29.svg.png"
+#> [2] "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/GOP_logo_%28positive%29.svg/250px-GOP_logo_%28positive%29.svg.png"                                          
+# }
 ```

@@ -74,18 +74,26 @@ information as it only fetches each Wikipedia page once.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="co"># Get info for multiple parties</span></span></span>
-<span class="r-in"><span><span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="st">"https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"</span>,</span></span>
-<span class="r-in"><span>  <span class="st">"https://en.wikipedia.org/wiki/Republican_Party_(United_States)"</span>,</span></span>
-<span class="r-in"><span>  <span class="st">"https://en.wikipedia.org/wiki/Social_Democratic_Party_of_Germany"</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">get_party_info</span><span class="op">(</span><span class="va">urls</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">curl</span><span class="fu">::</span><span class="fu"><a href="https://jeroen.r-universe.dev/curl/reference/nslookup.html" class="external-link">has_internet</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co"># Get info for multiple parties</span></span></span>
+<span class="r-in"><span>  <span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="st">"https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"https://en.wikipedia.org/wiki/Republican_Party_(United_States)"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"https://en.wikipedia.org/wiki/Social_Democratic_Party_of_Germany"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">get_party_info</span><span class="op">(</span><span class="va">urls</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Include all colors</span></span></span>
-<span class="r-in"><span><span class="fu">get_party_info</span><span class="op">(</span><span class="va">urls</span>, all_colors <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span>  <span class="co"># Include all colors</span></span></span>
+<span class="r-in"><span>  <span class="fu">get_party_info</span><span class="op">(</span><span class="va">urls</span>, all_colors <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   url                                                  color logo_url all_colors</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> https://en.wikipedia.org/wiki/Democratic_Party_(Uni… #333… https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> https://en.wikipedia.org/wiki/Republican_Party_(Uni… #E81… https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> https://en.wikipedia.org/wiki/Social_Democratic_Par… #E30… https:/… <span style="color: #949494;">&lt;chr [1]&gt;</span> </span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

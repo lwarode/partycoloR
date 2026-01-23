@@ -38,14 +38,21 @@ A tibble with matching parties and their Wikipedia URLs.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-# Search for parties with "Democratic" in the name
-lookup_party_url("Democratic")
+# \donttest{
+if (curl::has_internet()) {
+  # Search for parties with "Democratic" in the name
+  lookup_party_url("Democratic")
 
-# Search within a specific country
-lookup_party_url("SPD", country = "DEU")
+  # Search within a specific country
+  lookup_party_url("SPD", country = "DEU")
 
-# Exact match
-lookup_party_url("CDU", country = "DEU", exact = TRUE)
-} # }
+  # Exact match
+  lookup_party_url("CDU", country = "DEU", exact = TRUE)
+}
+#> # A tibble: 1 × 8
+#>   country partyfacts_id url            name_short name  name_native year_founded
+#>   <chr>           <int> <chr>          <chr>      <chr> <chr>              <int>
+#> 1 DEU              1375 https://en.wi… CDU        Chri… Christlich…         1945
+#> # ℹ 1 more variable: year_dissolved <int>
+# }
 ```
