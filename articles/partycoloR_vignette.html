@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">partycoloR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,7 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lwarode/partycoloR" class="external-link">partycoloR</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lwarode.github.io/partycoloR/">partycoloR</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
@@ -322,11 +322,41 @@ color extraction:</p>
 <span><span class="co">#&gt; "#0015BC" NA NA</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
+<h2 id="caching-and-bundled-data">Caching and Bundled Data<a class="anchor" aria-label="anchor" href="#caching-and-bundled-data"></a>
 </h2>
-<p>The Party Facts data is cached in the R session to avoid repeated
-downloads:</p>
+<div class="section level3">
+<h3 id="bundled-party-data">Bundled Party Data<a class="anchor" aria-label="anchor" href="#bundled-party-data"></a>
+</h3>
+<p>Starting with version 0.3.0, <code>partycoloR</code> includes
+pre-scraped color and logo data for major political parties. This means
+faster lookups without network requests:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># By default, uses bundled data (instant lookup)</span></span>
+<span><span class="fu"><a href="../reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="st">"https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Force live scraping for most recent data</span></span>
+<span><span class="fu"><a href="../reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="st">"https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"</span>,</span>
+<span>                use_cache <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># View the bundled dataset</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">party_data</span><span class="op">)</span></span></code></pre></div>
+<p>The bundled data covers parties from G20 countries and major European
+democracies. If a party is not in the bundled data, functions
+automatically fall back to live Wikipedia scraping.</p>
+<p><strong>When to use <code>use_cache = FALSE</code>:</strong></p>
+<ul>
+<li>You need the most current data (party recently changed colors)</li>
+<li>Working with a newly created party not yet in the bundled
+dataset</li>
+<li>Wikipedia page was recently updated with new information</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="party-facts-data-caching">Party Facts Data Caching<a class="anchor" aria-label="anchor" href="#party-facts-data-caching"></a>
+</h3>
+<p>The Party Facts dataset is also cached in the R session to avoid
+repeated downloads:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># First call downloads the data</span></span>
 <span><span class="va">pf_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_partyfacts_wikipedia.html">get_partyfacts_wikipedia</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
@@ -335,6 +365,7 @@ downloads:</p>
 <span></span>
 <span><span class="co"># Clear the cache if needed</span></span>
 <span><span class="fu"><a href="../reference/clear_partycolor_cache.html">clear_partycolor_cache</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="tips-and-best-practices">Tips and Best Practices<a class="anchor" aria-label="anchor" href="#tips-and-best-practices"></a>

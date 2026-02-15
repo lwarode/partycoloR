@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">partycoloR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,37 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.2.0" id="partycolor-020">partycoloR 0.2.0<a class="anchor" aria-label="anchor" href="#partycolor-020"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.3.0" id="partycolor-030">partycoloR 0.3.0<a class="anchor" aria-label="anchor" href="#partycolor-030"></a></h2>
+<div class="section level3">
+<h3 id="new-features-0-3-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-3-0"></a></h3>
+<ul><li><p><strong>Bundled party data</strong>: Package now includes pre-scraped color and logo data for major political parties, providing instant lookups without Wikipedia scraping. This dramatically improves performance and reduces load on Wikipedia servers.</p></li>
+<li><p>New dataset <code>party_data</code> - bundled party colors and logos from Wikipedia with columns: url, color, all_colors, logo_url, and last_updated. Covers parties from G20 countries and major European democracies.</p></li>
+<li><p>New parameter <code>use_cache</code> (default <code>TRUE</code>) in <code><a href="../reference/get_party_color.html">get_party_color()</a></code>, <code><a href="../reference/get_party_logo.html">get_party_logo()</a></code>, and <code><a href="../reference/get_party_info.html">get_party_info()</a></code> to prefer bundled data over live scraping. Set to <code>FALSE</code> to always scrape fresh data from Wikipedia.</p></li>
+<li><p>New script <code>data-raw/update.R</code> to regenerate bundled data from Wikipedia. Package maintainers can use this to periodically update the cached data.</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="improvements-0-3-0">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-3-0"></a></h3>
+<ul><li><p><strong>Faster performance</strong>: Bundled data lookups are ~100x faster than live scraping for parties in the cache.</p></li>
+<li><p><strong>Reduced Wikipedia server load</strong>: Default behavior now uses cached data, with graceful fallback to live scraping for parties not in the bundled dataset.</p></li>
+<li><p><strong>Graceful fallback</strong>: If a party is not in bundled data, functions automatically fall back to live scraping, ensuring full backward compatibility.</p></li>
+<li><p><strong>Offline capability</strong>: Cached parties can be accessed without internet connection.</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-0-3-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-3-0"></a></h3>
+<ul><li><p>Added comprehensive documentation for <code>party_data</code> dataset.</p></li>
+<li><p>Updated all function examples to demonstrate both cached and live scraping modes.</p></li>
+<li><p>Added new test suite <code>test-bundled_data.R</code> with 20+ tests for cache functionality.</p></li>
+<li><p>Updated vignette with section on bundled data vs. live scraping.</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="internal-0-3-0">Internal<a class="anchor" aria-label="anchor" href="#internal-0-3-0"></a></h3>
+<ul><li><p>Added <code>LazyData: true</code> to DESCRIPTION for efficient data loading.</p></li>
+<li><p>Added cache lookup helper functions: <code>lookup_cached_color()</code>, <code>lookup_cached_logo()</code>, <code>lookup_cached_info()</code>.</p></li>
+<li><p>Updated all integration tests to explicitly use <code>use_cache = FALSE</code> for testing live scraping functionality.</p></li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.2.0" id="partycolor-020">partycoloR 0.2.0<a class="anchor" aria-label="anchor" href="#partycolor-020"></a></h2><p class="text-muted">CRAN release: 2026-01-27</p>
 <div class="section level3">
 <h3 id="new-features-0-2-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-2-0"></a></h3>
 <ul><li><p>New function <code><a href="../reference/get_party_color.html">get_party_color()</a></code> - vectorized color extraction with support for multiple colors (<code>all_colors</code> parameter) and color normalization.</p></li>

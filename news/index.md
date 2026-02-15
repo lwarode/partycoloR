@@ -1,6 +1,72 @@
 # Changelog
 
+## partycoloR 0.3.0
+
+### New Features
+
+- **Bundled party data**: Package now includes pre-scraped color and
+  logo data for major political parties, providing instant lookups
+  without Wikipedia scraping. This dramatically improves performance and
+  reduces load on Wikipedia servers.
+
+- New dataset `party_data` - bundled party colors and logos from
+  Wikipedia with columns: url, color, all_colors, logo_url, and
+  last_updated. Covers parties from G20 countries and major European
+  democracies.
+
+- New parameter `use_cache` (default `TRUE`) in
+  [`get_party_color()`](https://lwarode.github.io/partycoloR/reference/get_party_color.md),
+  [`get_party_logo()`](https://lwarode.github.io/partycoloR/reference/get_party_logo.md),
+  and
+  [`get_party_info()`](https://lwarode.github.io/partycoloR/reference/get_party_info.md)
+  to prefer bundled data over live scraping. Set to `FALSE` to always
+  scrape fresh data from Wikipedia.
+
+- New script `data-raw/update.R` to regenerate bundled data from
+  Wikipedia. Package maintainers can use this to periodically update the
+  cached data.
+
+### Improvements
+
+- **Faster performance**: Bundled data lookups are ~100x faster than
+  live scraping for parties in the cache.
+
+- **Reduced Wikipedia server load**: Default behavior now uses cached
+  data, with graceful fallback to live scraping for parties not in the
+  bundled dataset.
+
+- **Graceful fallback**: If a party is not in bundled data, functions
+  automatically fall back to live scraping, ensuring full backward
+  compatibility.
+
+- **Offline capability**: Cached parties can be accessed without
+  internet connection.
+
+### Documentation
+
+- Added comprehensive documentation for `party_data` dataset.
+
+- Updated all function examples to demonstrate both cached and live
+  scraping modes.
+
+- Added new test suite `test-bundled_data.R` with 20+ tests for cache
+  functionality.
+
+- Updated vignette with section on bundled data vs. live scraping.
+
+### Internal
+
+- Added `LazyData: true` to DESCRIPTION for efficient data loading.
+
+- Added cache lookup helper functions: `lookup_cached_color()`,
+  `lookup_cached_logo()`, `lookup_cached_info()`.
+
+- Updated all integration tests to explicitly use `use_cache = FALSE`
+  for testing live scraping functionality.
+
 ## partycoloR 0.2.0
+
+CRAN release: 2026-01-27
 
 ### New Features
 

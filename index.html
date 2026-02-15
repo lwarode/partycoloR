@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">partycoloR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,11 +65,14 @@
 <h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
 </h2>
 <ul>
+<li>
+<strong>Fast lookups</strong> with bundled party data for major political parties (100x faster than live scraping)</li>
 <li>Extract party colors (HEX codes) from Wikipedia infoboxes</li>
 <li>Extract party logo URLs</li>
 <li>Handle parties with multiple colors</li>
 <li>Integrate with the <a href="https://partyfacts.herokuapp.com/" class="external-link">Party Facts</a> database for party lookups</li>
 <li>Works seamlessly with dplyr/tidyverse workflows</li>
+<li>Automatic fallback to live Wikipedia scraping for parties not in bundled data</li>
 </ul>
 </div>
 <div class="section level2">
@@ -87,7 +90,7 @@
 <h3 id="extract-party-colors">Extract Party Colors<a class="anchor" aria-label="anchor" href="#extract-party-colors"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lwarode/partycoloR" class="external-link">partycoloR</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lwarode.github.io/partycoloR/">partycoloR</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Single party</span></span>
 <span><span class="fu"><a href="reference/get_party_color.html">get_party_color</a></span><span class="op">(</span><span class="st">"https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"</span><span class="op">)</span></span>
@@ -204,6 +207,7 @@ ParlGov Dashboard
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=partycoloR" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/lwarode/partycoloR/" class="external-link">Browse source code</a></li>
 <li><a href="https://github.com/lwarode/partycoloR/issues" class="external-link">Report a bug</a></li>
 <li><a href="https://partyfacts.herokuapp.com/" class="external-link">Party Facts</a></li>

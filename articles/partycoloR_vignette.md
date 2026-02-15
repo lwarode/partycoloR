@@ -273,10 +273,40 @@ get_party_color(urls)
 #> "#0015BC" NA NA
 ```
 
-## Caching
+## Caching and Bundled Data
 
-The Party Facts data is cached in the R session to avoid repeated
-downloads:
+### Bundled Party Data
+
+Starting with version 0.3.0, `partycoloR` includes pre-scraped color and
+logo data for major political parties. This means faster lookups without
+network requests:
+
+``` r
+# By default, uses bundled data (instant lookup)
+get_party_color("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+
+# Force live scraping for most recent data
+get_party_color("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+                use_cache = FALSE)
+
+# View the bundled dataset
+head(party_data)
+```
+
+The bundled data covers parties from G20 countries and major European
+democracies. If a party is not in the bundled data, functions
+automatically fall back to live Wikipedia scraping.
+
+**When to use `use_cache = FALSE`:**
+
+- You need the most current data (party recently changed colors)
+- Working with a newly created party not yet in the bundled dataset
+- Wikipedia page was recently updated with new information
+
+### Party Facts Data Caching
+
+The Party Facts dataset is also cached in the R session to avoid
+repeated downloads:
 
 ``` r
 # First call downloads the data

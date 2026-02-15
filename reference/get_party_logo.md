@@ -7,7 +7,7 @@ image.
 ## Usage
 
 ``` r
-get_party_logo(url)
+get_party_logo(url, use_cache = TRUE)
 ```
 
 ## Arguments
@@ -16,12 +16,26 @@ get_party_logo(url)
 
   A character vector of Wikipedia URLs for political party pages.
 
+- use_cache:
+
+  Logical. If \`TRUE\` (default), looks up data in the bundled
+  \`party_data\` dataset first before scraping Wikipedia. If \`FALSE\`,
+  always scrapes live from Wikipedia. Using the cache is much faster and
+  reduces load on Wikipedia servers.
+
 ## Value
 
 A character vector of logo image URLs (or NA for failed extractions or
 pages without logos).
 
 ## Details
+
+By default, this function uses the bundled \`party_data\` dataset which
+contains pre-scraped logo URLs for major political parties. This
+provides instant lookups without network requests. If a party is not in
+the bundled data, the function automatically falls back to live
+Wikipedia scraping. Set \`use_cache = FALSE\` to always scrape fresh
+data from Wikipedia.
 
 The function looks for logo images in the Wikipedia infobox. The
 returned URL is typically a Wikimedia Commons thumbnail URL. Note that
@@ -40,8 +54,12 @@ For use with \`dplyr::mutate()\`, this function is vectorized over the
 ``` r
 # \donttest{
 if (curl::has_internet()) {
-  # Single party
+  # Fast lookup using bundled data (default)
   get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+
+  # Force live scraping for most recent data
+  get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+                 use_cache = FALSE)
 
   # Multiple parties
   urls <- c(

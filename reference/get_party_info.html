@@ -9,7 +9,7 @@ English Wikipedia page in a single call."><meta property="og:image" content="htt
 
     <a class="navbar-brand me-2" href="../index.html">partycoloR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,7 @@ English Wikipedia page in a single call.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_party_info</span><span class="op">(</span><span class="va">url</span>, all_colors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_party_info</span><span class="op">(</span><span class="va">url</span>, all_colors <span class="op">=</span> <span class="cn">FALSE</span>, use_cache <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -59,6 +59,13 @@ English Wikipedia page in a single call.</p>
 <dd><p>Logical. If `FALSE` (default), returns only the primary
 color in the `color` column. If `TRUE`, adds an `all_colors` list-column.</p></dd>
 
+
+<dt id="arg-use-cache">use_cache<a class="anchor" aria-label="anchor" href="#arg-use-cache"></a></dt>
+<dd><p>Logical. If `TRUE` (default), looks up data in the bundled
+`party_data` dataset first before scraping Wikipedia. If `FALSE`, always
+scrapes live from Wikipedia. Using the cache is much faster and reduces
+load on Wikipedia servers.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -67,7 +74,12 @@ color in the `color` column. If `TRUE`, adds an `all_colors` list-column.</p></d
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>This function combines [get_party_color()] and [get_party_logo()] into
+    <p>By default, this function uses the bundled `party_data` dataset which contains
+pre-scraped data for major political parties. This provides instant lookups
+without network requests. If a party is not in the bundled data, the function
+automatically falls back to live Wikipedia scraping. Set `use_cache = FALSE`
+to always scrape fresh data from Wikipedia.</p>
+<p>This function combines [get_party_color()] and [get_party_logo()] into
 a single call, which is more efficient when you need both pieces of
 information as it only fetches each Wikipedia page once.</p>
     </div>
@@ -76,13 +88,16 @@ information as it only fetches each Wikipedia page once.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">curl</span><span class="fu">::</span><span class="fu"><a href="https://jeroen.r-universe.dev/curl/reference/nslookup.html" class="external-link">has_internet</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="co"># Get info for multiple parties</span></span></span>
+<span class="r-in"><span>  <span class="co"># Fast lookup using bundled data (default)</span></span></span>
 <span class="r-in"><span>  <span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    <span class="st">"https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"</span>,</span></span>
 <span class="r-in"><span>    <span class="st">"https://en.wikipedia.org/wiki/Republican_Party_(United_States)"</span>,</span></span>
 <span class="r-in"><span>    <span class="st">"https://en.wikipedia.org/wiki/Social_Democratic_Party_of_Germany"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu">get_party_info</span><span class="op">(</span><span class="va">urls</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># Force live scraping for most recent data</span></span></span>
+<span class="r-in"><span>  <span class="fu">get_party_info</span><span class="op">(</span><span class="va">urls</span>, use_cache <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Include all colors</span></span></span>
 <span class="r-in"><span>  <span class="fu">get_party_info</span><span class="op">(</span><span class="va">urls</span>, all_colors <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>

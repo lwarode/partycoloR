@@ -1,5 +1,12 @@
 # Package index
 
+## Bundled Data
+
+Pre-scraped party colors and logos
+
+- [`party_data`](https://lwarode.github.io/partycoloR/reference/party_data.md)
+  : Bundled party colors and logos dataset
+
 ## Core Functions
 
 Extract colors and logos from Wikipedia
