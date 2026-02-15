@@ -20,12 +20,16 @@ identifying political parties in data visualizations and research.
 
 ## Features
 
+- **Fast lookups** with bundled party data for major political parties
+  (100x faster than live scraping)
 - Extract party colors (HEX codes) from Wikipedia infoboxes
 - Extract party logo URLs
 - Handle parties with multiple colors
 - Integrate with the [Party Facts](https://partyfacts.herokuapp.com/)
   database for party lookups
 - Works seamlessly with dplyr/tidyverse workflows
+- Automatic fallback to live Wikipedia scraping for parties not in
+  bundled data
 
 ## Installation
 

@@ -146,6 +146,95 @@ extract_logo_from_infobox <- function(html) {
   NA_character_
 }
 
+#' Look up party color from bundled cache
+#'
+#' @param url Wikipedia URL
+#' @param all_colors Logical. Return all colors or just primary
+#' @return Color(s) from bundled data, or NULL if not found
+#' @noRd
+lookup_cached_color <- function(url, all_colors = FALSE) {
+  # Check if party_data exists (it should be loaded via LazyData)
+  if (!exists("party_data", envir = asNamespace("partycoloR"), inherits = FALSE)) {
+    return(NULL)
+  }
+
+  # Get the data from package namespace
+  data <- get("party_data", envir = asNamespace("partycoloR"))
+
+  # Find matching URL
+  match_idx <- which(data$url == url)
+
+  if (length(match_idx) == 0) {
+    return(NULL)
+  }
+
+  # Return color(s)
+  if (all_colors) {
+    # Return the list element (all_colors column is a list column)
+    return(data$all_colors[[match_idx[1]]])
+  } else {
+    # Return primary color
+    return(data$color[match_idx[1]])
+  }
+}
+
+#' Look up party logo from bundled cache
+#'
+#' @param url Wikipedia URL
+#' @return Logo URL from bundled data, or NULL if not found
+#' @noRd
+lookup_cached_logo <- function(url) {
+  # Check if party_data exists
+  if (!exists("party_data", envir = asNamespace("partycoloR"), inherits = FALSE)) {
+    return(NULL)
+  }
+
+  # Get the data from package namespace
+  data <- get("party_data", envir = asNamespace("partycoloR"))
+
+  # Find matching URL
+  match_idx <- which(data$url == url)
+
+  if (length(match_idx) == 0) {
+    return(NULL)
+  }
+
+  # Return logo URL
+  return(data$logo_url[match_idx[1]])
+}
+
+#' Look up party info from bundled cache
+#'
+#' @param url Wikipedia URL
+#' @param all_colors Logical. Include all colors in result
+#' @return Tibble row with party info, or NULL if not found
+#' @noRd
+lookup_cached_info <- function(url, all_colors = FALSE) {
+  # Check if party_data exists
+  if (!exists("party_data", envir = asNamespace("partycoloR"), inherits = FALSE)) {
+    return(NULL)
+  }
+
+  # Get the data from package namespace
+  data <- get("party_data", envir = asNamespace("partycoloR"))
+
+  # Find matching URL
+  match_idx <- which(data$url == url)
+
+  if (length(match_idx) == 0) {
+    return(NULL)
+  }
+
+  # Extract relevant columns
+  if (all_colors) {
+    row <- data[match_idx[1], c("url", "color", "all_colors", "logo_url")]
+  } else {
+    row <- data[match_idx[1], c("url", "color", "logo_url")]
+  }
+
+  return(row)
+}
+
 #' Show a package startup message
 #'
 #' @param libname Library name

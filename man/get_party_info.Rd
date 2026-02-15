@@ -4,13 +4,18 @@
 \alias{get_party_info}
 \title{Extract party information from Wikipedia}
 \usage{
-get_party_info(url, all_colors = FALSE)
+get_party_info(url, all_colors = FALSE, use_cache = TRUE)
 }
 \arguments{
 \item{url}{A character vector of Wikipedia URLs for political party pages.}
 
 \item{all_colors}{Logical. If `FALSE` (default), returns only the primary
 color in the `color` column. If `TRUE`, adds an `all_colors` list-column.}
+
+\item{use_cache}{Logical. If `TRUE` (default), looks up data in the bundled
+`party_data` dataset first before scraping Wikipedia. If `FALSE`, always
+scrapes live from Wikipedia. Using the cache is much faster and reduces
+load on Wikipedia servers.}
 }
 \value{
 A tibble with columns: `url`, `color` (primary color as hex),
@@ -21,6 +26,12 @@ Extracts both the party color(s) and logo URL from a political party's
 English Wikipedia page in a single call.
 }
 \details{
+By default, this function uses the bundled `party_data` dataset which contains
+pre-scraped data for major political parties. This provides instant lookups
+without network requests. If a party is not in the bundled data, the function
+automatically falls back to live Wikipedia scraping. Set `use_cache = FALSE`
+to always scrape fresh data from Wikipedia.
+
 This function combines [get_party_color()] and [get_party_logo()] into
 a single call, which is more efficient when you need both pieces of
 information as it only fetches each Wikipedia page once.
@@ -28,13 +39,16 @@ information as it only fetches each Wikipedia page once.
 \examples{
 \donttest{
 if (curl::has_internet()) {
-  # Get info for multiple parties
+  # Fast lookup using bundled data (default)
   urls <- c(
     "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
     "https://en.wikipedia.org/wiki/Republican_Party_(United_States)",
     "https://en.wikipedia.org/wiki/Social_Democratic_Party_of_Germany"
   )
   get_party_info(urls)
+
+  # Force live scraping for most recent data
+  get_party_info(urls, use_cache = FALSE)
 
   # Include all colors
   get_party_info(urls, all_colors = TRUE)

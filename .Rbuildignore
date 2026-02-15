@@ -15,3 +15,5 @@
 ^docs$
 ^pkgdown$
 ^README\.html$
+^TODO\.md$
+^screenshot_gh_package_page\.png$

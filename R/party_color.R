@@ -10,12 +10,22 @@
 #' @param normalize Logical. If `TRUE` (default), attempts to normalize color
 #'   values to uppercase hex codes. Named colors (e.g., "red") are converted
 #'   to hex codes.
+#' @param use_cache Logical. If `TRUE` (default), looks up data in the bundled
+#'   `party_data` dataset first before scraping Wikipedia. If `FALSE`, always
+#'   scrapes live from Wikipedia. Using the cache is much faster and reduces
+#'   load on Wikipedia servers.
 #'
 #' @return If `all_colors = FALSE`, a character vector of hex color codes
 #'   (or NA for failed extractions). If `all_colors = TRUE`, a list of
 #'   character vectors containing all colors for each URL.
 #'
 #' @details
+#' By default, this function uses the bundled `party_data` dataset which contains
+#' pre-scraped data for major political parties. This provides instant lookups
+#' without network requests. If a party is not in the bundled data, the function
+#' automatically falls back to live Wikipedia scraping. Set `use_cache = FALSE`
+#' to always scrape fresh data from Wikipedia.
+#'
 #' The function works by scraping the Wikipedia infobox (vcard table) for
 #' spans with background-color style attributes. This depends on Wikipedia's
 #' current HTML structure and may occasionally fail if the page structure changes.
@@ -28,8 +38,12 @@
 #' @examples
 #' \donttest{
 #' if (curl::has_internet()) {
-#'   # Single party
+#'   # Fast lookup using bundled data (default)
 #'   get_party_color("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+#'
+#'   # Force live scraping for most recent data
+#'   get_party_color("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+#'                   use_cache = FALSE)
 #'
 #'   # Multiple parties
 #'   urls <- c(
@@ -42,7 +56,7 @@
 #'   get_party_color(urls, all_colors = TRUE)
 #' }
 #' }
-get_party_color <- function(url, all_colors = FALSE, normalize = TRUE) {
+get_party_color <- function(url, all_colors = FALSE, normalize = TRUE, use_cache = TRUE) {
   # Validate input
   if (!is.character(url)) {
     rlang::abort("`url` must be a character vector")
@@ -58,6 +72,19 @@ get_party_color <- function(url, all_colors = FALSE, normalize = TRUE) {
       }
     }
 
+    # Try cache lookup first if enabled
+    if (use_cache) {
+      cached <- lookup_cached_color(u, all_colors)
+      if (!is.null(cached)) {
+        if (all_colors) {
+          return(list(cached))
+        } else {
+          return(cached)
+        }
+      }
+    }
+
+    # Scrape from Wikipedia (cache miss or cache disabled)
     html <- read_html_safe(u)
     colors <- extract_colors_from_infobox(html)
 

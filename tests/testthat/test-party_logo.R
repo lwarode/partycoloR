@@ -33,7 +33,7 @@ test_that("get_party_logo extracts logo from Wikipedia", {
   skip_on_ci_network()
 
   url <- "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"
-  result <- get_party_logo(url)
+  result <- get_party_logo(url, use_cache = FALSE)
 
   expect_type(result, "character")
   expect_length(result, 1)
@@ -49,7 +49,7 @@ test_that("get_party_logo handles multiple URLs", {
     "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
     "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
   )
-  result <- get_party_logo(urls)
+  result <- get_party_logo(urls, use_cache = FALSE)
 
   expect_type(result, "character")
   expect_length(result, 2)

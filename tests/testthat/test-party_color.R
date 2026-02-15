@@ -40,7 +40,7 @@ test_that("get_party_color extracts color from Wikipedia", {
   skip_on_ci_network()
 
   url <- "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"
-  result <- get_party_color(url)
+  result <- get_party_color(url, use_cache = FALSE)
 
   expect_type(result, "character")
   expect_length(result, 1)
@@ -56,7 +56,7 @@ test_that("get_party_color handles multiple URLs", {
     "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
     "https://en.wikipedia.org/wiki/Republican_Party_(United_States)"
   )
-  result <- get_party_color(urls)
+  result <- get_party_color(urls, use_cache = FALSE)
 
   expect_type(result, "character")
   expect_length(result, 2)
@@ -70,7 +70,7 @@ test_that("get_party_color with all_colors returns multiple colors", {
   skip_on_ci_network()
 
   url <- "https://en.wikipedia.org/wiki/Christian_Democratic_Union_of_Germany"
-  result <- get_party_color(url, all_colors = TRUE)
+  result <- get_party_color(url, all_colors = TRUE, use_cache = FALSE)
 
   expect_type(result, "list")
   expect_length(result, 1)

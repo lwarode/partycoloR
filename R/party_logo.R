@@ -4,11 +4,21 @@
 #' page. The function scrapes the party infobox for the logo image.
 #'
 #' @param url A character vector of Wikipedia URLs for political party pages.
+#' @param use_cache Logical. If `TRUE` (default), looks up data in the bundled
+#'   `party_data` dataset first before scraping Wikipedia. If `FALSE`, always
+#'   scrapes live from Wikipedia. Using the cache is much faster and reduces
+#'   load on Wikipedia servers.
 #'
 #' @return A character vector of logo image URLs (or NA for failed extractions
 #'   or pages without logos).
 #'
 #' @details
+#' By default, this function uses the bundled `party_data` dataset which contains
+#' pre-scraped logo URLs for major political parties. This provides instant lookups
+#' without network requests. If a party is not in the bundled data, the function
+#' automatically falls back to live Wikipedia scraping. Set `use_cache = FALSE`
+#' to always scrape fresh data from Wikipedia.
+#'
 #' The function looks for logo images in the Wikipedia infobox. The returned
 #' URL is typically a Wikimedia Commons thumbnail URL. Note that some party
 #' pages may not have logos, or the logo may be in a non-standard location.
@@ -24,8 +34,12 @@
 #' @examples
 #' \donttest{
 #' if (curl::has_internet()) {
-#'   # Single party
+#'   # Fast lookup using bundled data (default)
 #'   get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+#'
+#'   # Force live scraping for most recent data
+#'   get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+#'                  use_cache = FALSE)
 #'
 #'   # Multiple parties
 #'   urls <- c(
@@ -35,7 +49,7 @@
 #'   get_party_logo(urls)
 #' }
 #' }
-get_party_logo <- function(url) {
+get_party_logo <- function(url, use_cache = TRUE) {
   # Validate input
   if (!is.character(url)) {
     rlang::abort("`url` must be a character vector")
@@ -47,6 +61,15 @@ get_party_logo <- function(url) {
       return(NA_character_)
     }
 
+    # Try cache lookup first if enabled
+    if (use_cache) {
+      cached <- lookup_cached_logo(u)
+      if (!is.null(cached)) {
+        return(cached)
+      }
+    }
+
+    # Scrape from Wikipedia (cache miss or cache disabled)
     html <- read_html_safe(u)
     extract_logo_from_infobox(html)
   })

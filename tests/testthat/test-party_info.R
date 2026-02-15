@@ -39,7 +39,7 @@ test_that("get_party_info extracts both color and logo", {
   skip_on_ci_network()
 
   url <- "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"
-  result <- get_party_info(url)
+  result <- get_party_info(url, use_cache = FALSE)
 
   expect_s3_class(result, "tbl_df")
   expect_equal(nrow(result), 1)
@@ -62,7 +62,7 @@ test_that("get_party_info handles multiple URLs efficiently", {
     "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
     "https://en.wikipedia.org/wiki/Social_Democratic_Party_of_Germany"
   )
-  result <- get_party_info(urls)
+  result <- get_party_info(urls, use_cache = FALSE)
 
   expect_equal(nrow(result), 2)
   expect_equal(result$url, urls)

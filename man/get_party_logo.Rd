@@ -4,10 +4,15 @@
 \alias{get_party_logo}
 \title{Extract party logo URL from Wikipedia}
 \usage{
-get_party_logo(url)
+get_party_logo(url, use_cache = TRUE)
 }
 \arguments{
 \item{url}{A character vector of Wikipedia URLs for political party pages.}
+
+\item{use_cache}{Logical. If `TRUE` (default), looks up data in the bundled
+`party_data` dataset first before scraping Wikipedia. If `FALSE`, always
+scrapes live from Wikipedia. Using the cache is much faster and reduces
+load on Wikipedia servers.}
 }
 \value{
 A character vector of logo image URLs (or NA for failed extractions
@@ -18,6 +23,12 @@ Extracts the party logo image URL from a political party's English Wikipedia
 page. The function scrapes the party infobox for the logo image.
 }
 \details{
+By default, this function uses the bundled `party_data` dataset which contains
+pre-scraped logo URLs for major political parties. This provides instant lookups
+without network requests. If a party is not in the bundled data, the function
+automatically falls back to live Wikipedia scraping. Set `use_cache = FALSE`
+to always scrape fresh data from Wikipedia.
+
 The function looks for logo images in the Wikipedia infobox. The returned
 URL is typically a Wikimedia Commons thumbnail URL. Note that some party
 pages may not have logos, or the logo may be in a non-standard location.
@@ -31,8 +42,12 @@ argument.
 \examples{
 \donttest{
 if (curl::has_internet()) {
-  # Single party
+  # Fast lookup using bundled data (default)
   get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)")
+
+  # Force live scraping for most recent data
+  get_party_logo("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+                 use_cache = FALSE)
 
   # Multiple parties
   urls <- c(
