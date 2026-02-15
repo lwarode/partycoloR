@@ -28,6 +28,11 @@ navbar:
       href: https://github.com/lwarode/partycoloR
 
 reference:
+- title: Bundled Data
+  desc: Pre-scraped party colors and logos
+  contents:
+  - party_data
+
 - title: Core Functions
   desc: Extract colors and logos from Wikipedia
   contents:

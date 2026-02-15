@@ -37,6 +37,6 @@ Suggests:
     dplyr,
     tidyr
 VignetteBuilder: knitr
-URL: https://github.com/lwarode/partycoloR
+URL: https://lwarode.github.io/partycoloR/, https://github.com/lwarode/partycoloR
 BugReports: https://github.com/lwarode/partycoloR/issues
 Config/testthat/edition: 3
