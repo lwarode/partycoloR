@@ -3,7 +3,7 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   partycoloR_vignette: partycoloR_vignette.html
-last_built: 2026-02-15T19:53Z
+last_built: 2026-02-16T11:25Z
 urls:
   reference: https://lwarode.github.io/partycoloR/reference
   article: https://lwarode.github.io/partycoloR/articles

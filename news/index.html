@@ -38,8 +38,8 @@
 <h2 class="pkg-version" data-toc-text="0.3.0" id="partycolor-030">partycoloR 0.3.0<a class="anchor" aria-label="anchor" href="#partycolor-030"></a></h2>
 <div class="section level3">
 <h3 id="new-features-0-3-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-0-3-0"></a></h3>
-<ul><li><p><strong>Bundled party data</strong>: Package now includes pre-scraped color and logo data for major political parties, providing instant lookups without Wikipedia scraping. This dramatically improves performance and reduces load on Wikipedia servers.</p></li>
-<li><p>New dataset <code>party_data</code> - bundled party colors and logos from Wikipedia with columns: url, color, all_colors, logo_url, and last_updated. Covers parties from G20 countries and major European democracies.</p></li>
+<ul><li><p><strong>Bundled party data</strong>: Package now includes pre-scraped color and logo data from the Party Facts Wikipedia dataset, providing instant lookups without Wikipedia scraping. This dramatically improves performance and reduces load on Wikipedia servers.</p></li>
+<li><p>New dataset <code>party_data</code> - bundled party colors and logos from Wikipedia with columns: url, color, all_colors, logo_url, and last_updated. Includes all parties from the Party Facts Wikipedia dataset with available color data.</p></li>
 <li><p>New parameter <code>use_cache</code> (default <code>TRUE</code>) in <code><a href="../reference/get_party_color.html">get_party_color()</a></code>, <code><a href="../reference/get_party_logo.html">get_party_logo()</a></code>, and <code><a href="../reference/get_party_info.html">get_party_info()</a></code> to prefer bundled data over live scraping. Set to <code>FALSE</code> to always scrape fresh data from Wikipedia.</p></li>
 <li><p>New script <code>data-raw/update.R</code> to regenerate bundled data from Wikipedia. Package maintainers can use this to periodically update the cached data.</p></li>
 </ul></div>

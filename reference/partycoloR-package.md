@@ -14,6 +14,8 @@ and Bederke, Döring, and Regel (2023)
 
 Useful links:
 
+- <https://lwarode.github.io/partycoloR/>
+
 - <https://github.com/lwarode/partycoloR>
 
 - Report bugs at <https://github.com/lwarode/partycoloR/issues>

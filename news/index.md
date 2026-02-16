@@ -5,14 +5,14 @@
 ### New Features
 
 - **Bundled party data**: Package now includes pre-scraped color and
-  logo data for major political parties, providing instant lookups
-  without Wikipedia scraping. This dramatically improves performance and
-  reduces load on Wikipedia servers.
+  logo data from the Party Facts Wikipedia dataset, providing instant
+  lookups without Wikipedia scraping. This dramatically improves
+  performance and reduces load on Wikipedia servers.
 
 - New dataset `party_data` - bundled party colors and logos from
   Wikipedia with columns: url, color, all_colors, logo_url, and
-  last_updated. Covers parties from G20 countries and major European
-  democracies.
+  last_updated. Includes all parties from the Party Facts Wikipedia
+  dataset with available color data.
 
 - New parameter `use_cache` (default `TRUE`) in
   [`get_party_color()`](https://lwarode.github.io/partycoloR/reference/get_party_color.md),

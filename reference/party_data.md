@@ -1,9 +1,9 @@
 # Bundled party colors and logos dataset
 
 A dataset containing pre-scraped party colors and logos from Wikipedia
-for major political parties worldwide. This dataset is bundled with the
-package to provide fast lookups without requiring live Wikipedia
-scraping.
+for political parties in the Party Facts database. This dataset is
+bundled with the package to provide fast lookups without requiring live
+Wikipedia scraping.
 
 ## Usage
 
@@ -44,9 +44,10 @@ and Bederke, Döring, and Regel (2023) \<doi:10.7910/DVN/TJINLQ\>.
 
 ## Details
 
-This dataset contains pre-scraped color and logo information for major
-political parties from around the world, with emphasis on parties from
-G20 countries and major European democracies.
+This dataset contains pre-scraped color and logo information for
+political parties from the Party Facts Wikipedia dataset, covering
+parties worldwide that have English Wikipedia pages with available color
+data.
 
 The data is used by default in \[get_party_color()\],
 \[get_party_logo()\], and \[get_party_info()\] to provide instant
@@ -68,20 +69,98 @@ To regenerate or update this dataset, see the script at
 ``` r
 # View structure of bundled data
 str(party_data)
-#> tibble [219 × 5] (S3: tbl_df/tbl/data.frame)
-#>  $ url         : chr [1:219] "https://en.wikipedia.org/wiki/Cambiemos" "https://en.wikipedia.org/wiki/Kolina" "https://en.wikipedia.org/wiki/Workers%27_Left_Front" "https://en.wikipedia.org/wiki/National_Party_of_Australia" ...
-#>  $ color       : chr [1:219] "#FFD700" "#04B45F" "#F65058" "#008000" ...
-#>  $ all_colors  :List of 219
+#> tibble [1,591 × 5] (S3: tbl_df/tbl/data.frame)
+#>  $ url         : chr [1:1591] "https://en.wikipedia.org/wiki/Aruban_People%27s_Party" "https://en.wikipedia.org/wiki/People%27s_Electoral_Movement_(Aruba)" "https://en.wikipedia.org/wiki/Jamiat-e_Islami" "https://en.wikipedia.org/wiki/National_Coalition_of_Afghanistan" ...
+#>  $ color       : chr [1:1591] "#65B22E" "#FFEC36" "#03913D" "#004E98" ...
+#>  $ all_colors  :List of 1591
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#65B22E"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#FFEC36"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#03913D" "#FFFFFF"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:5] "#004E98" "#8C6B33" "#19130F" "#DB1F16" ...
 #>   ..$ :List of 1
 #>   .. ..$ : chr "#FFD700"
 #>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#FF0000" "#FCDD09"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#CE0921"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#FFC614" "#095392"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#96CDEF" "#008000"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#ED1C24" "#000000"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#F8D308"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#009EE2" "#D0CC02"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#EF4A2E"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#0C5D34" "#AC2232"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:3] "#D51920" "#000000" "#FFFFFF"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:4] "#E3171B" "#6EB42C" "#5E3894" "#EA088B"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:3] "#2E4166" "#EFCB2D" "#019DC5"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#FF6600" "#0066FF"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#FF0000"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#192B6B"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#E30C1B"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#B51601"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#66FFCC"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#FFA500"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#FC2015"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#0F2B3D"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#FFD700"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#318CE7" "#FFFFFF"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#318CE7" "#FFFFFF"
+#>   ..$ :List of 1
 #>   .. ..$ : chr "#04B45F"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#0047AB" "#FFFFFF"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#192B6B" "#005C9E"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#00C4F0"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#E10019" "#FFFFFF"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#0E3C61"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#FFD700"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#E30C1B" "#FF9900"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#19BC9D"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#6495ED" "#FFFFFF"
 #>   ..$ :List of 1
 #>   .. ..$ : chr "#F65058"
 #>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#008000" "#FEF032"
+#>   .. ..$ : chr [1:2] "#FF0000" "#FFD700"
 #>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#008000" "#FEF032"
+#>   .. ..$ : chr [1:3] "#2C2755" "#FFFFFF" "#5169B1"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#ED1A24" "#183964"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#D9B368" "#1E3970"
 #>   ..$ :List of 1
 #>   .. ..$ : chr [1:2] "#24AA96" "#FFCD00"
 #>   ..$ :List of 1
@@ -95,194 +174,116 @@ str(party_data)
 #>   ..$ :List of 1
 #>   .. ..$ : chr "#F00011"
 #>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#FF6300" "#000000"
+#>   ..$ :List of 1
 #>   .. ..$ : chr [1:2] "#FFA500" "#7F007F"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#00557C"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#FF7F00" "#080CAB"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#1456F1" "#FF7F00"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#FFD425"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#B50204"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#1456F1"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#080CAB"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#080CAB" "#66C7DE"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#008000" "#FEF032"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#008000" "#FEF032"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#008000" "#FEF032"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#6495ED"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#FF6900" "#0076BC"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#3198FF"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#F00011"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#F8EF21"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#00008B"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#0056A2"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#63C3D0" "#000000"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:3] "#E4013B" "#000000" "#AA0000"
 #>   ..$ :List of 1
 #>   .. ..$ : chr "#FF5F61"
 #>   ..$ :List of 1
 #>   .. ..$ : chr "#87B529"
 #>   ..$ :List of 1
-#>   .. ..$ : chr "#0056A2"
+#>   .. ..$ : chr [1:3] "#ED2939" "#009258" "#FFFFFF"
 #>   ..$ :List of 1
-#>   .. ..$ : chr [1:3] "#E4013B" "#000000" "#AA0000"
+#>   .. ..$ : chr [1:3] "#000000" "#FF0000" "#FFCC00"
 #>   ..$ :List of 1
-#>   .. ..$ : chr "#01796F"
+#>   .. ..$ : chr "#FFDC00"
 #>   ..$ :List of 1
-#>   .. ..$ : chr "#F4761A"
+#>   .. ..$ : chr "#CB1667"
 #>   ..$ :List of 1
-#>   .. ..$ : chr "#FF6200"
+#>   .. ..$ : chr [1:2] "#FFFFFF" "#ADADAD"
 #>   ..$ :List of 1
-#>   .. ..$ : chr "#FF6200"
+#>   .. ..$ : chr [1:4] "#000000" "#FFFFFF" "#DE0000" "#964B00"
 #>   ..$ :List of 1
-#>   .. ..$ : chr "#EA5B0D"
+#>   .. ..$ : chr "#162D68"
 #>   ..$ :List of 1
-#>   .. ..$ : chr "#DD0081"
+#>   .. ..$ : chr "#008000"
 #>   ..$ :List of 1
-#>   .. ..$ : chr [1:4] "#339933" "#FFCC00" "#BD0914" "#333333"
+#>   .. ..$ : chr "#E42712"
 #>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#FF2200" "#FFFF00"
+#>   .. ..$ : chr "#284696"
 #>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#CC0000" "#FFE500"
+#>   .. ..$ : chr "#D40000"
 #>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#0033A1" "#2670CB"
+#>   .. ..$ : chr "#FF0000"
 #>   ..$ :List of 1
-#>   .. ..$ : chr [1:4] "#00A54F" "#FED304" "#015AAA" "#FFFFFF"
+#>   .. ..$ : chr "#007DC3"
 #>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#0080FF" "#FFDF00"
+#>   .. ..$ : chr "#007DC3"
 #>   ..$ :List of 1
-#>   .. ..$ : chr [1:5] "#CC0033" "#F3F3F3" "#160064" "#00FF00" ...
+#>   .. ..$ : chr [1:2] "#0075C1" "#F8D101"
 #>   ..$ :List of 1
-#>   .. ..$ : chr "#87CEFA"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#EC1C24"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#6495ED"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#99C955"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#EA6D6A"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#F4A460"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#6F5D9A"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#EFDA18" "#1161A6"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#0E52A0"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#84B414"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#B4DC00" "#119CD4"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#134B94"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:5] "#83B926" "#3865A1" "#E1153B" "#ED8611" ...
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#FF0000" "#FFFF00"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#1E90FF"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#03BF00"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#FF4500"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#EE1C25"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#000099"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#261060"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:3] "#000000" "#CE7BCB" "#FDC702"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:4] "#FAC469" "#FFFFFF" "#D80C13" "#09437F"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#FFDC00" "#0000AA"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#E8387F"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#10547D"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#C10506"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#00A2DE"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#409A3C"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#409A3C"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:3] "#51B8C2" "#151518" "#FFA600"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#005973" "#151518"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#008AC5" "#A2C516"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#409A3C"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#00D564" "#18942D"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:3] "#1B4D8B" "#EE243A" "#FCD03B"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:3] "#D2307E" "#02944F" "#733280"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:3] "#D0004C" "#15A06B" "#F7660D"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#D4337A"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#FFFF00"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#00583C" "#6B9249"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#1D84CE"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#ADCFEF"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:4] "#FFDD00" "#B2071B" "#000000" "#FFFFFF"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#EB6109" "#01383C"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#EC8953"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#006288"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:4] "#2B67C9" "#FFFFFF" "#B7D0EE" "#F18716"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#AE2375"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#3AAD2E"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:4] "#007AC9" "#B81224" "#000000" "#FFDD93"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:3] "#FFFFFF" "#DA2E31" "#8B0000"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:3] "#FFDE55" "#0036A5" "#FFFFFF"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#F54B4B"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#FF5500"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#F00A64"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#6495ED"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:3] "#0055A4" "#FFFFFF" "#EF4135"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:4] "#0043B0" "#FFFFFF" "#F0002B" "#0087CD"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#4BB166"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#254671"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#69B95A"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#F6CB2F" "#000000"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#2B45A2" "#FF0000"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#12B6CF" "#FFFFFF"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:3] "#FF0000" "#FFFFFF" "#2E3B74"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#0087DC"
-#>   ..$ :List of 1
-#>   .. ..$ : chr "#3F1D70"
-#>   ..$ :List of 1
-#>   .. ..$ : chr [1:4] "#C93242" "#FFFFFF" "#051D3E" "#D46A4C"
+#>   .. ..$ : chr [1:3] "#C8102E" "#43B02A" "#FFFFFF"
 #>   ..$ :List of 1
 #>   .. ..$ : chr [1:2] "#FF0000" "#FFFFFF"
 #>   ..$ :List of 1
-#>   .. ..$ : chr [1:2] "#38A3E7" "#F0001C"
+#>   .. ..$ : chr "#FF66FF"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#DC241F"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#FF0000"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#FFD700"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#FF6200"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#FF6200"
+#>   ..$ :List of 1
+#>   .. ..$ : chr [1:2] "#FFA500" "#000000"
+#>   ..$ :List of 1
+#>   .. ..$ : chr "#EA5B0D"
 #>   .. [list output truncated]
-#>  $ logo_url    : chr [1:219] "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Juntos-Por-El-Cambio-Logo.svg/250px-Juntos-Por-El-Cam"| __truncated__ "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Kolina_logo.png/250px-Kolina_logo.png" "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Logo_Frente_de_Izquierda_y_de_Trabajadores-Unidad.svg"| __truncated__ "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/The_National_Party_of_Australia_Logo.svg/250px-The_Na"| __truncated__ ...
-#>  $ last_updated: Date[1:219], format: "2026-02-15" "2026-02-15" ...
+#>  $ logo_url    : chr [1:1591] "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Arubaanse_Volkspartij_logo.png/250px-Arubaanse_Volkspartij_logo.png" "https://upload.wikimedia.org/wikipedia/en/thumb/3/38/People%27s_Electoral_Movement_%28Aruba%29.png/250px-People"| __truncated__ "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Logo_of_Jamiat-e_Islami.svg/250px-Logo_of_Jamiat-e_Islami.svg.png" "https://upload.wikimedia.org/wikipedia/en/thumb/f/fc/Emblem_of_the_National_Coalition_of_Afghanistan.svg/250px-"| __truncated__ ...
+#>  $ last_updated: Date[1:1591], format: "2026-02-16" "2026-02-16" ...
 
 # Number of parties in bundled dataset
 nrow(party_data)
-#> [1] 219
+#> [1] 1591
 
 # Count of parties by availability of data
 sum(!is.na(party_data$color))    # Parties with colors
-#> [1] 219
+#> [1] 1591
 sum(!is.na(party_data$logo_url)) # Parties with logos
-#> [1] 212
+#> [1] 1484
 
 # Example: Find a specific party
 if (FALSE) { # \dontrun{

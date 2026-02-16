@@ -8,8 +8,8 @@ identifying political parties in data visualizations and research.
 
 ## Features
 
-- **Fast lookups** with bundled party data for major political parties
-  (100x faster than live scraping)
+- **Fast lookups** with bundled party data from Party Facts Wikipedia
+  dataset (100x faster than live scraping)
 - Extract party colors (HEX codes) from Wikipedia infoboxes
 - Extract party logo URLs
 - Handle parties with multiple colors
