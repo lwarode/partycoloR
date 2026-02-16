@@ -1,8 +1,8 @@
 #' Bundled party colors and logos dataset
 #'
 #' A dataset containing pre-scraped party colors and logos from Wikipedia for
-#' major political parties worldwide. This dataset is bundled with the package
-#' to provide fast lookups without requiring live Wikipedia scraping.
+#' political parties in the Party Facts database. This dataset is bundled with
+#' the package to provide fast lookups without requiring live Wikipedia scraping.
 #'
 #' @format A tibble with 5 columns:
 #' \describe{
@@ -14,9 +14,9 @@
 #' }
 #'
 #' @details
-#' This dataset contains pre-scraped color and logo information for major
-#' political parties from around the world, with emphasis on parties from
-#' G20 countries and major European democracies.
+#' This dataset contains pre-scraped color and logo information for political
+#' parties from the Party Facts Wikipedia dataset, covering parties worldwide
+#' that have English Wikipedia pages with available color data.
 #'
 #' The data is used by default in [get_party_color()], [get_party_logo()],
 #' and [get_party_info()] to provide instant lookups. If a party is not

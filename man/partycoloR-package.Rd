@@ -13,6 +13,7 @@ Extract political party colors and logos from English Wikipedia party pages. Pro
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://lwarode.github.io/partycoloR/}
   \item \url{https://github.com/lwarode/partycoloR}
   \item Report bugs at \url{https://github.com/lwarode/partycoloR/issues}
 }

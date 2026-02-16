@@ -296,9 +296,9 @@ get_party_color("https://en.wikipedia.org/wiki/Democratic_Party_(United_States)"
 head(party_data)
 ```
 
-The bundled data covers parties from G20 countries and major European democracies.
-If a party is not in the bundled data, functions automatically fall back to live
-Wikipedia scraping.
+The bundled data includes parties from the Party Facts Wikipedia dataset with
+available color data. If a party is not in the bundled data, functions
+automatically fall back to live Wikipedia scraping.
 
 **When to use `use_cache = FALSE`:**
 
