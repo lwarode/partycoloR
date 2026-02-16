@@ -31,48 +31,22 @@ pf_data <- read_csv(
 
 message(sprintf("Loaded %d parties from Partyfacts", nrow(pf_data)))
 
-# Define priority countries (G20 + major European democracies)
-priority_countries <- c(
-  # G20
-  "USA", "CAN", "MEX", "BRA", "ARG",  # Americas
-  "GBR", "DEU", "FRA", "ITA", "ESP",  # Western Europe
-  "RUS", "TUR", "SAU", "ZAF",         # Other G20
-  "CHN", "JPN", "KOR", "IND", "IDN", "AUS",  # Asia-Pacific
-  # Additional European democracies
-  "NLD", "BEL", "AUT", "CHE", "SWE", "NOR", "DNK", "FIN",
-  "POL", "CZE", "HUN", "GRC", "PRT", "IRL",
-  # Other significant democracies
-  "NZL", "ISR", "CHL"
-)
-
 message("Selecting parties to scrape...")
 
-# Select parties: prioritize active, major parties from priority countries
+# Select all parties with Wikipedia URLs
 selected_parties <- pf_data %>%
-  filter(
-    country %in% priority_countries,
-    !is.na(url)
-  ) %>%
-  # Prioritize active parties (not dissolved)
-  mutate(
-    is_active = is.na(year_dissolved) | year_dissolved == "",
-    recently_dissolved = !is.na(year_dissolved) & year_dissolved != "" &
-      as.numeric(year_dissolved) >= 1990
-  ) %>%
-  # Sort by priority: active first, then recently dissolved, then by country
-  arrange(desc(is_active), desc(recently_dissolved), country) %>%
-  # Take up to 10 parties per country (adjust as needed for package size)
-  group_by(country) %>%
-  slice_head(n = 10) %>%
-  ungroup()
+  filter(!is.na(url)) %>%
+  # Sort by country and name for organized scraping
+  arrange(country, name)
 
-message(sprintf("Selected %d parties from %d countries",
+message(sprintf("Selected %d parties with Wikipedia URLs from %d countries",
                 nrow(selected_parties),
                 n_distinct(selected_parties$country)))
 
 # Scrape colors and logos with rate limiting and error handling
-message("Starting Wikipedia scraping (this will take several minutes)...")
+message("Starting Wikipedia scraping (this will take 30-40 minutes)...")
 message("Rate limit: 0.5 seconds per party")
+message("Expected completion time: ~", round(nrow(selected_parties) * 0.5 / 60, 0), " minutes")
 
 party_data_list <- vector("list", nrow(selected_parties))
 failed_urls <- character(0)
